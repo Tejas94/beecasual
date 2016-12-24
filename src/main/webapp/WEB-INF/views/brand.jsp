@@ -36,18 +36,12 @@ function toggle()
 }
 
 </script>
-<link rel="stylesheet" href="resources/css/Style.css">
+
 <style type="text/css">
-td
-{
-    padding:0 15px 0 15px;
-}
-th
-{
-    padding:0 20px 0 20px;
-}
 #brandTable{
 display: none;
+
+
 }
  #buttonchange {
      background:none!important;
@@ -65,50 +59,81 @@ display: none;
 
 </head>
 <body>
-<br>
-<br>
-<br>
-<div ng-app="myApp" ng-controller="myCtrl" align="center">
-<form:form modelAttribute="brand" action="addBrand">
-<form:input type="hidden" path="brandId" />
-<form:input path="brandName" placeholder="add name" />
-<form:errors path="brandName"/><br>
-<form:input path="brandDescription" placeholder="add description" />
-<form:errors path="brandDescription" /><br>
-<c:if test="${!empty brand.brandName}">
-				<input type="submit" value="Edit brand"/>
-			</c:if>
-			<c:if test="${empty brand.brandName}">
-			<input type="submit" value="Add brand"/>
-			<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/>
-			<input type="text" ng-model="test" placeholder="Search"/>
-			</c:if>
 
-<br>
-<br>
-<table id="brandTable">
-<tr>
-<th><input id="buttonchange" type="button" ng-click="sortType= 'brandId'; sortReverse= !sortReverse" value="Brand Id ">
-<span ng-show="sortType== 'brandId'" ></span>
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
+	<form:form modelAttribute="brand" action="addBrand">
+		<div class="content">
+				<!--login-->
+			<div class="login">
+				<div class="main-agileits" >
+					<div class="form-w3agile form1"   >
+						<h3>Brand form</h3>			
+							<div class="key">
+							
+								<form:input type="hidden" path="brandId" />
+								<form:input path="brandName" placeholder="add name" />
+								<form:errors path="brandName"/><br>
+								<div class="clearfix"></div>
+							</div>
+							<div class="key">
+								<form:input path="brandDescription" placeholder="add description" />
+								<form:errors path="brandDescription" /><br>
+								<div class="clearfix"></div>
+							</div>
+						
+						
+							<c:if test="${!empty brand.brandName}">
+							<input type="submit" value="Edit brand"/>
+							</c:if>
+			 				<c:if test="${empty brand.brandName}">
+							<input type="submit" value="Add brand"/>
+		 			 		<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/> 
+							<input type="text" ng-model="test" placeholder="Search"/> 
+							<br>
+							</c:if> 
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="table-responsive">
+				<table class="table" id="brandTable" align="center">
+					<thead>										
+						<tr>
+							<th><input id="buttonchange" type="button" ng-click="sortType= 'brandId'; sortReverse= !sortReverse" value="Brand Id ">
+							<span ng-show="sortType== 'brandId'" ></span>
 
-<th><input id="buttonchange" type="button" ng-click="sortType= 'brandName'; sortReverse= !sortReverse" value="Brand Name ">
-<span ng-show="sortType== 'brandName'" ></span>
+							<th><input id="buttonchange" type="button" ng-click="sortType= 'brandName'; sortReverse= !sortReverse" value="Brand Name ">
+							<span ng-show="sortType== 'brandName'" ></span>
 
-<th><input id="buttonchange" type="button" ng-click="sortType= 'brandDescription'; sortReverse= !sortReverse" value="Brand Description ">
-<span ng-show="sortType== 'brandDescription'" ></span>
+							<th><input id="buttonchange" type="button" ng-click="sortType= 'brandDescription'; sortReverse= !sortReverse" value="Brand Description ">
+							<span ng-show="sortType== 'brandDescription'" ></span>
 
-<tr>
+						<tr>
+					</thead>
+					<tbody>
+							<tr ng-repeat="b in jsonData | orderBy:sortType:sortReverse | filter:test">
+							<td>{{b.brandId}}</td>
+							<td>{{b.brandName}}</td>
+							<td>{{b.brandDescription}}</td>
+							<td><a href="editBrand-{{b.brandId}}"/>Edit</td>
+							<td><a href="deleteBrand-{{b.brandId}}"/>Delete</td>
+						<tr>
+					</tbody>
+				</table>
+			</div>
 
-<tr ng-repeat="b in jsonData">
-<td>{{b.brandId}}</td>
-<td>{{b.brandName}}</td>
-<td>{{b.brandDescription}}</td>
-<td><a href="editBrand-{{b.brandId}}"/>Edit</td>
-<td><a href="deleteBrand-{{b.brandId}}"/>Delete</td>
-<tr>
-</table>
-</form:form>
+	</form:form>
 </div>
+					
+
+		<!--content-->
+		
+
+
+
+
+
+
 </body>
 </html>
 

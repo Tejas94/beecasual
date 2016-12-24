@@ -125,7 +125,7 @@ public class ProductController {
 		@RequestMapping("/deleteProduct-{productId}")
 		public String deleteProduct(@PathVariable("productId") int productId)
 		{
-		productService.deleteProduct(productId);;
+		productService.deleteProduct(productId);
 		return "redirect:/product";
 		}
 		
