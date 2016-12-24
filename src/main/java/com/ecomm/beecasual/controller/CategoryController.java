@@ -1,9 +1,12 @@
 package com.ecomm.beecasual.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,10 +30,18 @@ public class CategoryController
 	CategoryService categoryService;
 	
 	@RequestMapping("/addCategory")
-	public String addCategory(@ModelAttribute("category") Category category)
+	public String addCategory(@Valid@ModelAttribute("category") Category category,BindingResult bindingResult,Model model)
 	{
+		if(bindingResult.hasErrors()){
+			model.addAttribute("categoryList", categoryService.getJsonList());
+			return "/category";
+			
+		}
+		else
+		{
 		categoryService.addCategory(category);
 		return "redirect:/category";
+		}
 	}
 	@RequestMapping("/deleteCategory-{categoryId}")
 	public String deleteCategory(@PathVariable("categoryId")  int categoryId)

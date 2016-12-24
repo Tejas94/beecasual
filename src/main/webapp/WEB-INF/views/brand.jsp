@@ -52,6 +52,30 @@ display: none;
      border-bottom:1px solid #444; 
      cursor: pointer;
 }
+#buttonToggle{
+ background: #fdb515;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 32%;
+    cursor: pointer;
+    margin-bottom:30px;
+ 
+
+}
+#buttonToggle:hover{
+ background:#AF1D0D;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+ 
+
+}
   
 </style>
 
@@ -71,12 +95,12 @@ display: none;
 							<div class="key">
 							
 								<form:input type="hidden" path="brandId" />
-								<form:input path="brandName" placeholder="add name" />
+								<form:input path="brandName" placeholder="add name" /><br>
 								<form:errors path="brandName"/><br>
 								<div class="clearfix"></div>
 							</div>
 							<div class="key">
-								<form:input path="brandDescription" placeholder="add description" />
+								<form:input path="brandDescription" placeholder="add description" /><br>
 								<form:errors path="brandDescription" /><br>
 								<div class="clearfix"></div>
 							</div>
@@ -87,9 +111,8 @@ display: none;
 							</c:if>
 			 				<c:if test="${empty brand.brandName}">
 							<input type="submit" value="Add brand"/>
-		 			 		<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/> 
+		 			 		<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/> <br>
 							<input type="text" ng-model="test" placeholder="Search"/> 
-							<br>
 							</c:if> 
 					</div>
 				</div>
@@ -121,7 +144,7 @@ display: none;
 					</tbody>
 				</table>
 			</div>
-
+	
 	</form:form>
 </div>
 					
@@ -137,3 +160,4 @@ display: none;
 </body>
 </html>
 
+<%@include file="Footer.jsp" %>

@@ -39,14 +39,6 @@ function toggle()
 </script>
 
 <style type="text/css">
-td
-{
-    padding:0 15px 0 15px;
-}
-th
-{
-    padding:0 20px 0 20px;
-}
 #supplierTable{
 max-width:500px;
 display: none;
@@ -60,27 +52,76 @@ display: none;
      border-bottom:1px solid #444; 
      cursor: pointer;
 }
+  #buttonToggle{
+ background: #fdb515;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 32%;
+    cursor: pointer;
+    margin-bottom:30px;
+ 
+
+}
+#buttonToggle:hover{
+ background:#AF1D0D;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+ 
+
+}
   
 </style>
 
 
 </head>
 <body>
-<br>
-<br>
-<br>
-<div ng-app="myApp" ng-controller="myCtrl" align="center">
-<form:form modelAttribute="supplier" action="addSupplier">
-<form:input type="hidden" path="supplierId" /><br>
-<form:input path="supplierName" placeholder="add name" />
-<form:errors path="supplierName"/><br>
-<form:input path="supplierAddress" placeholder="add address" />
-<form:errors path="supplierAddress"/><br>
-<form:input path="supplierContact" placeholder="add contact"/>
-<form:errors path="supplierContact" /><br>
-<form:input path="supplierEmailId" placeholder="add email"/>
-<form:errors path="supplierEmailId" /><br>
-<c:if test="${!empty supplier.supplierName}">
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
+	<form:form modelAttribute="supplier" action="addSupplier">
+		<div class="content">
+				<!--login-->
+			<div class="login">
+				<div class="main-agileits" >
+					<div class="form-w3agile form1"   >
+						<h3>Supplier form</h3>			
+							<div class="key">
+							
+								<form:input type="hidden" path="supplierId" />
+								<form:input path="supplierName" placeholder="add name" /><br>
+								<form:errors path="supplierName"/><br>
+								<div class="clearfix"></div>
+							</div>
+							<div class="key">
+								<form:input path="supplierAddress" placeholder="add address" /><br>
+								<form:errors path="supplierAddress" /><br>
+								<div class="clearfix"></div>
+							</div>
+
+							<div class="key">
+								<form:input path="supplierContact" placeholder="add contact" /><br>
+								<form:errors path="supplierContact" /><br>
+								<div class="clearfix"></div>
+							</div>
+						
+
+							<div class="key">
+								<form:input path="supplierEmailId" placeholder="add email" /><br>
+								<form:errors path="supplierEmailId" /><br>
+								<div class="clearfix"></div>
+							</div>
+						
+
+						
+						
+						
+							<c:if test="${!empty supplier.supplierName}">
 				<input type="submit" value="Edit supplier"/>
 			</c:if>
 			<c:if test="${empty supplier.supplierName}">
@@ -89,10 +130,15 @@ display: none;
 			<input type="text" ng-model="test" placeholder="Search"/>
 			</c:if>
          
-<br>
-<br>
-<table id="supplierTable" align="center">
-<tr>
+ 
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="table-responsive">
+				<table class="table" id="supplierTable" align="center">
+					<thead>										
+						<tr>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'supplierId'; sortReverse= !sortReverse" value="supplier Id ">
 <span ng-show="sortType== 'supplierId'" ></span>
 
@@ -109,8 +155,9 @@ display: none;
 <span ng-show="sortType== 'supplierEmailId'" ></span>
 
 <tr>
-
-<tr ng-repeat="s in jsonData| orderBy:sortType:sortReverse | filter:test">
+					</thead>
+					<tbody>
+							<tr ng-repeat="s in jsonData| orderBy:sortType:sortReverse | filter:test">
 <td>{{s.supplierId}}</td>
 <td>{{s.supplierName}}</td>
 <td>{{s.supplierAddress}}</td>
@@ -120,9 +167,15 @@ display: none;
 <td><a href="deleteSupplier-{{s.supplierId}}"/>Delete</td>
 <tr>
 
-</table>
-</form:form>
+
+					</tbody>
+				</table>
+			</div>
+	
+	</form:form>
 </div>
+					
 </body>
 </html>
 
+<%@include file="Footer.jsp" %>

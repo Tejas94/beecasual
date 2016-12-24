@@ -61,6 +61,7 @@ public class ProductController {
 		
 		if(bindingresult.hasErrors()){
 			
+			
 			return "/product";
 		}
 		else

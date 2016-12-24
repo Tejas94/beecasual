@@ -38,14 +38,6 @@ function toggle()
 </script>
 <link rel="stylesheet" href="resources/css/Style.css">
 <style type="text/css">
-td
-{
-    padding:0 15px 0 15px;
-}
-th
-{
-    padding:0 20px 0 20px;
-}
 #productTable{
 display: none;
 }
@@ -58,6 +50,30 @@ display: none;
      border-bottom:1px solid #444; 
      cursor: pointer;
 }
+#buttonToggle{
+ background: #fdb515;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 32%;
+    cursor: pointer;
+    margin-bottom:30px;
+ 
+
+}
+#buttonToggle:hover{
+ background:#AF1D0D;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+ 
+
+}
   
 </style>
 
@@ -65,58 +81,98 @@ display: none;
 
 </head>
 <body>
-<div ng-app="myApp" ng-controller="myCtrl" align="center">
-<form:form modelAttribute="product" action="addProduct" enctype="multipart/form-data">
-<form:input path="productId" type="hidden"/>
-<form:input path="productName" placeholder="add name"/>
-<form:errors path="productName"></form:errors><br>
- add quantity
-<form:input path="productQantity" placeholder="add quantity"/>
-<form:errors path="productQantity"></form:errors><br>
- add price
-<form:input path="productPrice" placeholder="add price"/><br> add discount
-<form:input path="productDiscount" placeholder="add discount"/><br>
-<form:input path="productDescription" placeholder="add desc"/>
-<form:errors path="productDescription"></form:errors><br>
-<form:input type="file" path="productImage"/>
-<br>
-<br>
-category
-<form:select path="category.categoryName">
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
+	<form:form modelAttribute="product" action="addProduct">
+		<div class="content">
+				<!--login-->
+			<div class="login">
+				<div class="main-agileits" >
+					<div class="form-w3agile form1"   >
+						<h3>Product form</h3>
+									
+							<div class="key">
+							
+								<form:input type="hidden" path="productId" />
+								<form:input path="productName" placeholder="add name" /><br>
+								<form:errors path="productName"/><br>
+								<div class="clearfix"></div>
+							</div>
+							Quantity
+							<div class="key">
+								<form:input path="productQantity" placeholder="add quantity" /><br>
+								<form:errors path="productQantity" /><br>
+								<div class="clearfix"></div>
+							</div>
+						Price
+					<div class="key">
+								<form:input path="productPrice" placeholder="add price" /><br>
+								<form:errors path="productPrice" /><br>
+								<div class="clearfix"></div>
+							</div>
+							discount
+					<div class="key">
+								<form:input path="productDiscount" placeholder="add discount" /><br>
+								<form:errors path="productDiscount" /><br>
+								<div class="clearfix"></div>
+							</div>
+					<div class="key">
+								<form:input path="productDescription" placeholder="add description" /><br>
+								<form:errors path="productDescription" /><br>
+								<div class="clearfix"></div>
+							</div>
+					<div class="key">
+								<form:input type="file" path="productImage"/><br>
+								
+								<div class="clearfix"></div>
+							</div>
+							
+					<div class="key">
+								Category<form:select path="category.categoryName">
  <form:options items="${categoryList}" itemValue="categoryName" itemLabel="categoryName"/>
-</form:select>
-<br>
-<br>
-subcategory
-<form:select path="subCategory.subCategoryName">
+</form:select><br>
+<div class="clearfix"></div>
+							</div>
+					<div class="key">
+								SubCategory<form:select path="subCategory.subCategoryName">
  <form:options items="${subCategoryList}" itemValue="subCategoryName" itemLabel="subCategoryName"/>
 </form:select>
 <br>
-<br>
-brand
-<form:select path="brand.brandName">
+<div class="clearfix"></div>
+							</div>
+					<div class="key">
+								Brand<form:select path="brand.brandName">
  <form:options items="${brandList}" itemValue="brandName" itemLabel="brandName"/>
 </form:select>
 <br>
-<br>
-supplier
-<form:select path="supplier.supplierName">
+
+								<div class="clearfix"></div>
+							</div>
+					<div class="key">
+Supplier<form:select path="supplier.supplierName">
  <form:options items="${supplierList}" itemValue="supplierName" itemLabel="supplierName"/>
 </form:select>
 <br>
-<br>
-<c:if test="${!empty product.productName}">
+
+								<div class="clearfix"></div>
+							</div>
+											
+						<c:if test="${!empty product.productName}">
 				<input type="submit" value="Edit product"/>
 			</c:if>
 			<c:if test="${empty product.productName}">
 			<input type="submit" value="Add product"/>
-			<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/>
+			<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/><br>
 			<input type="text" ng-model="test" placeholder="Search"/>
 			</c:if>
- <br>
-<br>
-<table border="1" id="productTable">
-<tr>
+ 
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="table-responsive">
+				<table class="table" id="productTable" align="center">
+					<thead>										
+						<tr>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'productId'; sortReverse= !sortReverse" value="product Id ">
 <span ng-show="sortType== 'productId'" ></span>
 
@@ -138,8 +194,9 @@ supplier
 </th>
 
 </tr>
-
-<tr ng-repeat="p in jsonData | filter:test | orderBy:sortType:sortReverse">
+					</thead>
+					<tbody>
+							<tr ng-repeat="p in jsonData | filter:test | orderBy:sortType:sortReverse">
 <td>{{p.productId}}</td>
 <td>{{p.productName}}</td>
 <td>{{p.productQantity}}</td>
@@ -150,10 +207,13 @@ supplier
 <td><a href="deleteProduct-{{p.productId}}">Delete</a></td>
 <tr>
 
-</table>
-
-</form:form>
+					</tbody>
+				</table>
+			</div>
+	
+	</form:form>
 </div>
+					
 
 
 </body>

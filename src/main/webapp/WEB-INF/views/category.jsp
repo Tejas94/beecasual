@@ -41,16 +41,9 @@ function toggle()
 </script>
 <link rel="stylesheet" href="resources/css/Style.css">
 <style type="text/css">
-td
-{
-    padding:0 15px 0 15px;
-}
-th
-{
-    padding:0 20px 0 20px;
-}
 #categoryTable{
 display: none;
+max-width: 40px;
 }
  #buttonchange {
      background:none!important;
@@ -61,31 +54,60 @@ display: none;
      border-bottom:1px solid #444; 
      cursor: pointer;
 }
+#buttonToggle{
+ background: #fdb515;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 32%;
+    cursor: pointer;
+    margin-bottom:30px;
+ 
+
+}
+#buttonToggle:hover{
+ background:#AF1D0D;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+ 
+
+}
+  
+
   
 </style>
 
 </head>
 <body>
-<div align="center" ng-app="myApp" ng-controller="myCtrl">
-<form:form modelAttribute="category" action="addCategory">
-   <table>
-   <tr>
-        <td><form:label path="categoryId">Category ID</form:label></td>
-        <td><form:input type="hidden" path="categoryId" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="categoryName">Category Name</form:label></td>
-        <td><form:input path="categoryName" /></td>
-    </tr>
-    <tr>
-        <td><form:label path="categoryDescription">Category Description</form:label></td>
-        <td><form:input path="categoryDescription" /></td>
-    </tr>
-   
-    <tr>
-        <td colspan="2">
-            
-            <c:if test="${!empty category.categoryName}">
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
+	<form:form modelAttribute="category" action="addCategory">
+		<div class="content">
+				<!--login-->
+			<div class="login">
+				<div class="main-agileits" >
+					<div class="form-w3agile form1"   >
+						<h3>Category form</h3>			
+							<div class="key">
+							
+								<form:input type="hidden" path="categoryId" />
+								<form:input path="categoryName" placeholder="add name" /><br>
+								<form:errors path="categoryName"/><br>
+								<div class="clearfix"></div>
+							</div>
+							<div class="key">
+								<form:input path="categoryDescription" placeholder="add description" /><br>
+								<form:errors path="categoryDescription" /><br>
+								<div class="clearfix"></div>
+							</div>
+						
+						
+						 <c:if test="${!empty category.categoryName}">
 				<input type="submit" value="Edit Category"/>
 			</c:if>
 			<c:if test="${empty category.categoryName}">
@@ -93,13 +115,14 @@ display: none;
 			<input type="button" id="buttonToggle" value="Show List" onclick="toggle();"/>
 			<input type="text" ng-model="test" placeholder="Search"/>
 			</c:if>
-           
-        </td>
-    </tr>
-</table>  
-<br>
-<table id="categoryTable">
-<tr>
+        	</div>
+				</div>
+			</div>
+		</div>
+			<div class="table-responsive">
+				<table class="table" id="categoryTable" align="center">
+					<thead>										
+						<tr>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'categoryId'; sortReverse= !sortReverse" value="category Id">
 <span ng-show="sortType== 'categoryId'" class="fa fa-caret-down"></span>
 
@@ -111,17 +134,23 @@ display: none;
 <span ng-show="sortType== 'categoryDescription'" class="fa fa-caret-down"></span>
 </th>
 </tr>
-
-<tr ng-repeat="c in jsonData | filter:test | orderBy:sortType:sortReverse">
+					</thead>
+					<tbody>
+							<tr ng-repeat="c in jsonData | filter:test | orderBy:sortType:sortReverse">
 <td>{{c.categoryId}}</td>
 <td>{{c.categoryName}}</td>
 <td>{{c.categoryDescription}}</td>
 <td><a href="editCategory-{{c.categoryId}}"/>Edit</td>
 <td><a href="deleteCategory-{{c.categoryId}}"/>Delete</td>
 </tr>
-</table>
-</form:form>
+
+					</tbody>
+				</table>
+			</div>
+	
+	</form:form>
 </div>
+
 </body>
 </html>
 <%@include file="Footer.jsp" %>

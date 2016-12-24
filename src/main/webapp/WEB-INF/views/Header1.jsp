@@ -84,11 +84,11 @@
 				<div class="container">
 					<div class="logo-nav">
 						<div class="logo-nav-left">
-							<h1><a href="index.html">bee casual <span>only casual clothing</span></a></h1>
+							<h1><a href="index.jsp" >bee casual <span>only casual clothing</span></a></h1>
 						</div>
 						<div class="logo-nav-left1">
 							<nav class="navbar navbar-default">
-							<!-- Brand and toggle get grouped for better mobile display -->
+							
 							<div class="navbar-header nav_2">
 								<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
 									<span class="sr-only">Toggle navigation</span>
@@ -99,7 +99,7 @@
 							</div> 
 							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="index.html" class="act">Home</a></li>	
+									<li class="active"><a href="index.jsp" class="act">Home</a></li>	
 									<!-- Mega Menu -->
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>

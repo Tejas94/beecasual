@@ -1,9 +1,13 @@
 package com.ecomm.beecasual.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ecomm.becasual.service.CategoryService;
@@ -29,13 +33,38 @@ public class SubCategoryController {
 	
 	
 	@RequestMapping("/addSubCategory")
-	public String addSubCategory(@ModelAttribute("subCategory") SubCategory subCategory){
-	
+	public String addSubCategory(@Valid@ModelAttribute("subCategory") SubCategory subCategory, BindingResult bindingresult, Model model)
+	{
+		if(bindingresult.hasErrors())
+		{
+			
+			return "/subCategory";
+		}
+		else
+		{
 		Category category=categoryService.getCategoryByName(subCategory.getCategory().getCategoryName());
         
         subCategory.setCategory(category);
         subCategory.setCategoryId(category.getCategoryId());
         subCategoryService.addSubCategory(subCategory);
 		return "redirect:/subCategory";
+		}
 	}
+	@RequestMapping("/editSubCategory-{subcategoryId}")
+	public String editProduct(Model model,@PathVariable("subcategoryId") int subcategoryId){
+	
+	model.addAttribute("categoryList", categoryService.getList());
+	model.addAttribute("subcategory", subCategoryService.getSubCategoryListById(subcategoryId));
+	
+	
+	return "/subCategory";
+
+}
+	@RequestMapping("/deleteSubCategory-{subcategoryId}")
+	public String deleteProduct(@PathVariable("subcategoryId") int subcategoryId)
+	{
+	subCategoryService.deleteSubCategory(subcategoryId);
+	return "redirect:/subCategory";
+	}
+
 }

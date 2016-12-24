@@ -11455,25 +11455,3 @@ h3.tittle1, h3.tittle {
       margin: auto;
   }
  
- .showlist{
- background: #fdb515;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 10px 0;
-    border: none;
-    font-size: 1em;
-    outline: none;
-    width: 32%;
-    cursor: pointer;
-    margin-bottom:30px;
- 
- }
- .showList:hover{
- background:#AF1D0D;
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
- 
- }
