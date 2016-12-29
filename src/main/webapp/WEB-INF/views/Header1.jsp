@@ -4,6 +4,7 @@
     <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
            <%@page isELIgnored="false" %>
+           <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,12 +70,21 @@
 				<div class="container">
 					 <div class="top-left">
 						<a href="#"> Help  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> +0123-456-789</a>
+						${pageContext.request.userPrincipal.name}
+<%-- 						<sec:authorize access="isAuthenticated()"> --%>
+<%-- 						<sec:authentication property="principal.Username"/> --%>
+<%-- 						</sec:authorize> --%>
 					</div>
 					<div class="top-right">
 					<ul>
 						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="registered.html"> Create Account </a></li>
+						<c:if test="${empty pageContext.request.userPrincipal}">
+						<li><a href="login">Login</a></li>
+						<li><a href="registerUser"> Create Account </a></li>
+						</c:if>
+						<c:if test="${!empty pageContext.request.userPrincipal}">
+						<li><a href="/BeeCasual/logout">Logout</a></li>
+						</c:if>
 					</ul>
 					</div>
 					<div class="clearfix"></div>
@@ -84,7 +94,7 @@
 				<div class="container">
 					<div class="logo-nav">
 						<div class="logo-nav-left">
-							<h1><a href="index.jsp" >bee casual <span>only casual clothing</span></a></h1>
+							<h1><a href="/BeeCasual/" >bee casual <span>only casual clothing</span></a></h1>
 						</div>
 						<div class="logo-nav-left1">
 							<nav class="navbar navbar-default">
@@ -99,7 +109,7 @@
 							</div> 
 							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="index.jsp" class="act">Home</a></li>	
+									<li class="active"><a href="/BeeCasual/" class="act">Home</a></li>	
 									<!-- Mega Menu -->
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
@@ -108,25 +118,25 @@
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu1</h6>
-														<li><a href="products.html">Clothing</a></li>
-														<li><a href="products.html">Wallets</a></li>
-														<li><a href="products.html">Shoes</a></li>
+														<li><a href="/BeeCasual/product.jsp">Clothing</a></li>
+														<li><a href="/BeeCasual/product.jsp">Wallets</a></li>
+														<li><a href="/BeeCasual/product.jsp">Shoes</a></li>
 														</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu2</h6>
-														<li><a href="products.html">Sunglasses</a></li>
-														<li><a href="products.html">Wallets,Bags</a></li>
-														<li><a href="products.html">Footwear</a></li>
-														<li><a href="products.html">Jewellery</a></li>
+														<li><a href="/BeeCasual/product.jsp">Sunglasses</a></li>
+														<li><a href="/BeeCasual/product.jsp">Wallets,Bags</a></li>
+														<li><a href="/BeeCasual/product.jsp">Footwear</a></li>
+														<li><a href="/BeeCasual/product.jsp">Jewellery</a></li>
 													</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products.html"><img src="resources/images/woo.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo.jpg" alt=" "/></a>
 												</div> 
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products.html"><img src="resources/images/woo1.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo1.jpg" alt=" "/></a>
 												</div>
 												<div class="clearfix"></div>
 											</div>
@@ -139,25 +149,25 @@
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu1</h6>
-														<li><a href="products.html">Clothing</a></li>
-														<li><a href="products.html">Wallets</a></li>
-														<li><a href="products.html">Shoes</a></li>
+														<li><a href="/becasual/product.jsp">Clothing</a></li>
+														<li><a href="/becasual/product.jsp">Wallets</a></li>
+														<li><a href="/becasual/product.jsp">Shoes</a></li>
 															</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu2</h6>
-														<li><a href="products.html">Sunglasses</a></li>
-														<li><a href="products.html">Wallets,Bags</a></li>
-														<li><a href="products.html">Footwear</a></li>
+														<li><a href="/becasual/product.jsp">Sunglasses</a></li>
+														<li><a href="/becasual/product.jsp">Wallets,Bags</a></li>
+														<li><a href="/becasual/product.jsp">Footwear</a></li>
 														
 													</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products1.html"><img src="resources/images/woo3.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo3.jpg" alt=" "/></a>
 												</div> 
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products1.html"><img src="resources/images/woo4.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo4.jpg" alt=" "/></a>
 												</div>
 												<div class="clearfix"></div>
 											</div>
@@ -170,25 +180,25 @@
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu1</h6>
-														<li><a href="products.html">Clothing</a></li>
-														<li><a href="products.html">Wallets</a></li>
-														<li><a href="products.html">Shoes</a></li>
+														<li><a href="/becasual/product.jsp">Clothing</a></li>
+														<li><a href="/becasual/product.jsp">Wallets</a></li>
+														<li><a href="/becasual/product.jsp">Shoes</a></li>
 															</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>Submenu2</h6>
-														<li><a href="products.html">Sunglasses</a></li>
-														<li><a href="products.html">Wallets,Bags</a></li>
-														<li><a href="products.html">Footwear</a></li>
+														<li><a href="/becasual/product.jsp">Sunglasses</a></li>
+														<li><a href="/becasual/product.jsp">Wallets,Bags</a></li>
+														<li><a href="/becasual/product.jsp">Footwear</a></li>
 														
 													</ul>
 												</div>
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products1.html"><img src="resources/images/woo3.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo3.jpg" alt=" "/></a>
 												</div> 
 												<div class="col-sm-3  multi-gd-img">
-														<a href="products1.html"><img src="resources/images/woo4.jpg" alt=" "/></a>
+														<a href="/becasual/product.jsp"><img src="resources/images/woo4.jpg" alt=" "/></a>
 												</div>
 												<div class="clearfix"></div>
 											</div>

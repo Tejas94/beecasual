@@ -40,6 +40,7 @@ function toggle()
 <style type="text/css">
 #brandTable{
 display: none;
+max-width: 600px;
 
 
 }

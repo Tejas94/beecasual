@@ -19,17 +19,26 @@ import com.ecomm.becasual.daoimpl.CategoryDAOImpl;
 import com.ecomm.becasual.daoimpl.ProductDAOImpl;
 import com.ecomm.becasual.daoimpl.SubCategoryDAOImpl;
 import com.ecomm.becasual.daoimpl.SupplierDAOImpl;
+import com.ecomm.becasual.daoimpl.UserDetailsDAOImpl;
 import com.ecomm.becasual.service.BrandService;
 import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.becasual.service.ProductService;
 import com.ecomm.becasual.service.SubCategoryService;
 import com.ecomm.becasual.service.SupplierService;
+import com.ecomm.becasual.service.UserDetailsService;
+import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.Brand;
+import com.ecomm.beecasual.model.Cart;
 import com.ecomm.beecasual.model.Category;
 import com.ecomm.beecasual.model.Product;
 import com.ecomm.beecasual.model.ProductSpecification;
+import com.ecomm.beecasual.model.Role;
+import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.SubCategory;
 import com.ecomm.beecasual.model.Supplier;
+import com.ecomm.beecasual.model.User;
+import com.ecomm.beecasual.model.UserDetails;
+import com.ecomm.beecasual.model.UserRole;
  
 @Configuration
 @EnableTransactionManagement
@@ -85,6 +94,13 @@ public class ApplicationContextConfig {
         sessionBuilder.addAnnotatedClass(Brand.class);
         sessionBuilder.addAnnotatedClass(Product.class);
         sessionBuilder.addAnnotatedClass(ProductSpecification.class);
+        sessionBuilder.addAnnotatedClass(User.class);
+        sessionBuilder.addAnnotatedClass(UserDetails.class);
+        sessionBuilder.addAnnotatedClass(Role.class);
+        sessionBuilder.addAnnotatedClass(Cart.class);
+        sessionBuilder.addAnnotatedClass(UserRole.class);
+        sessionBuilder.addAnnotatedClass(ShippingAddress.class);
+        sessionBuilder.addAnnotatedClass(BillingAddress.class);
         return sessionBuilder.buildSessionFactory();
     }
     
@@ -141,5 +157,19 @@ public class ApplicationContextConfig {
     public ProductService getProductService() {
     	return new ProductService();
     }
+    
+    @Autowired
+    @Bean("userDetailsDAOImpl")
+    public UserDetailsDAOImpl getUserDetails(SessionFactory sessionFactory) {
+    	return new UserDetailsDAOImpl(sessionFactory);
+    }
+    
+    @Autowired
+    @Bean("userDetailsService")
+    public UserDetailsService getUserDetailsService() {
+    	return new UserDetailsService();
+    }
+    
+   
 
 }

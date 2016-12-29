@@ -17,7 +17,7 @@
 	<meta name="keywords" content="footer, address, phone, icons" />
 
 
-	<title>Footer With Address And Phones</title>
+	
 
 	
 

@@ -40,6 +40,7 @@ function toggle()
 <style type="text/css">
 #productTable{
 display: none;
+
 }
  #buttonchange {
      background:none!important;
@@ -125,37 +126,49 @@ display: none;
 								
 								<div class="clearfix"></div>
 							</div>
-							
+				<div class="row">
+				<div class="col-xs-12 col-md-3">
+				Category			
 					<div class="key">
-								Category<form:select path="category.categoryName">
+								<form:select path="category.categoryName">
  <form:options items="${categoryList}" itemValue="categoryName" itemLabel="categoryName"/>
 </form:select><br>
 <div class="clearfix"></div>
 							</div>
+							</div>
+						<div class="col-xs-12 col-md-3">	
+						SubCategory
 					<div class="key">
-								SubCategory<form:select path="subCategory.subCategoryName">
+								<form:select path="subCategory.subCategoryName">
  <form:options items="${subCategoryList}" itemValue="subCategoryName" itemLabel="subCategoryName"/>
 </form:select>
 <br>
 <div class="clearfix"></div>
 							</div>
+							</div>
+						<div class="col-xs-12 col-md-3">	
+						Brand
 					<div class="key">
-								Brand<form:select path="brand.brandName">
+								<form:select path="brand.brandName">
  <form:options items="${brandList}" itemValue="brandName" itemLabel="brandName"/>
 </form:select>
 <br>
 
 								<div class="clearfix"></div>
 							</div>
+							</div>
+						<div class="col-xs-12 col-md-3">	
+						Supplier
 					<div class="key">
-Supplier<form:select path="supplier.supplierName">
+<form:select path="supplier.supplierName">
  <form:options items="${supplierList}" itemValue="supplierName" itemLabel="supplierName"/>
 </form:select>
 <br>
 
 								<div class="clearfix"></div>
 							</div>
-											
+							</div>
+						</div>					
 						<c:if test="${!empty product.productName}">
 				<input type="submit" value="Edit product"/>
 			</c:if>
