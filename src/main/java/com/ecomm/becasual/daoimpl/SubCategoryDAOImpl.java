@@ -11,6 +11,7 @@ import com.ecomm.becasual.dao.SubCategoryDAO;
 import com.ecomm.beecasual.model.Category;
 import com.ecomm.beecasual.model.SubCategory;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 @Repository
 public class SubCategoryDAOImpl implements SubCategoryDAO{
 	@Autowired
@@ -62,7 +63,7 @@ public class SubCategoryDAOImpl implements SubCategoryDAO{
 		Session session =sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<SubCategory> subCategoryList=session.createQuery("from SubCategory").getResultList();
-		Gson gson=new Gson();
+		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonSubList=gson.toJson(subCategoryList);
 		
 		return jsonSubList;

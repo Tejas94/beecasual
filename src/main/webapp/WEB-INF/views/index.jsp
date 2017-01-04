@@ -38,8 +38,69 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-
+  
+	<div class="content">
+			<!--banner-bottom-->
+				<div class="ban-bottom-w3l">
+					<div class="container">
+					<div class="row">
+						<div class="col-md-6 ban-bottom">
+							<div class="ban-top">
+								<img src="resources/images/p1.jpg" class="img-responsive" alt=""/>
+								<div class="ban-text">
+									<h4>Men's Clothing</h4>
+								</div>
+<!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
+<!-- 									<h4>50% <span>Off/-</span></h4> -->
+<!-- 								</div> -->
+							</div>
+						</div>
+		
+		<div class="col-md-6 ban-bottom">
+							<div class="ban-top">
+								<img src="resources/images/p2.jpg" class="img-responsive" alt=""/>
+								<div class="ban-text">
+									<h4>Women's Clothing</h4>
+								</div>
+<!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
+<!-- 									<h4>50% <span>Off/-</span></h4> -->
+<!-- 								</div> -->
+							</div>
+						</div>
+						</div>
+		<br>
+		<div class="row">
+		<div class="col-md-6 ban-bottom">
+							<div class="ban-top">
+								<img src="resources/images/p3.jpg" class="img-responsive" alt=""/>
+								<div class="ban-text">
+									<h4>View Collection</h4>
+								</div>
+<!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
+<!-- 									<h4>50% <span>Off/-</span></h4> -->
+<!-- 								</div> -->
+							</div>
+						</div>
+		
+		<div class="col-md-6 ban-bottom">
+							<div class="ban-top">
+								<img src="resources/images/p4.jpg" class="img-responsive" alt=""/>
+								<div class="ban-text">
+									<h4>official merchandise</h4>
+								</div>
+<!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
+<!-- 									<h4>50% <span>Off/-</span></h4> -->
+<!-- 								</div> -->
+							</div>
+						</div>
+						</div>
+		
+						<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				
 		
 
 

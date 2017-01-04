@@ -41,7 +41,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	public void deleteProduct(int productId) {
 		Product productToDelete= new Product();
-		productToDelete.setCategoryId(productId);
+		productToDelete.setProductId(productId);
 		sessionFactory.getCurrentSession().delete(productToDelete);
 		
 		

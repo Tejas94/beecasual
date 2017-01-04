@@ -40,6 +40,7 @@ function toggle()
 <style type="text/css">
 #productTable{
 display: none;
+max-width: 600px;
 
 }
  #buttonchange {
