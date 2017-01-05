@@ -170,6 +170,10 @@ public class ApplicationContextConfig {
     	return new UserDetailsService();
     }
     
-   
+    @Bean("registrationHandler")
+    public RegistrationHandler registrationHandler()
+    {
+    	return new RegistrationHandler();
+    }
 
 }

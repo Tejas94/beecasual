@@ -1,5 +1,7 @@
 package com.ecomm.beecasual.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class UserDetails {
+public class UserDetails implements Serializable {
 	@Id
 	private int userId;
 	private String firstName;

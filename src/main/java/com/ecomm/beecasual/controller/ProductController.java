@@ -53,6 +53,7 @@ public class ProductController {
 		model.addAttribute("brandList",brandService.getBrandList());
 		model.addAttribute("supplier", new Supplier());
 		model.addAttribute("supplierList",supplierService.getSupplierList());
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/product";
 	}
 	

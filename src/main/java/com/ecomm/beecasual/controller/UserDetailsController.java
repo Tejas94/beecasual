@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.ShippingAddress;
@@ -24,8 +25,8 @@ import com.ecomm.beecasual.model.UserDetails;
 public class UserDetailsController {
 	@Autowired
 	UserDetailsService userDetailsService;
-	
-	
+	@Autowired
+	CategoryService categoryService;
 	@RequestMapping("/registerUser")
 	public String registerUser(Model model)
 	{
@@ -36,7 +37,7 @@ public class UserDetailsController {
 		userDetails.setShippingAddress(shippingAddress);
 		
 		model.addAttribute("userDetails",userDetails);
-		
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		
 		return "/registerUser";
 	}
@@ -50,8 +51,8 @@ public class UserDetailsController {
 	}
 	
 	@RequestMapping("/login")
-	public String login() {
-
+	public String login(Model model) {
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/login";
 	}
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.becasual.service.SupplierService;
 
 import com.ecomm.beecasual.model.Supplier;
@@ -22,10 +23,13 @@ public class SupplierController {
 	{
 		model.addAttribute("supplier", new Supplier());
 		model.addAttribute("supplierList",supplierService.getJsonSupplierList());
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/supplier";
 	}
 	@Autowired
 	SupplierService supplierService;
+	@Autowired
+	CategoryService categoryService;
 	
 	@RequestMapping("/addSupplier")
 	public String addSupplier(Model model, @Valid @ModelAttribute("supplier") Supplier supplier,BindingResult bindingResult)

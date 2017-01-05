@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ecomm.becasual.service.BrandService;
+import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.beecasual.model.Brand;
 
 
@@ -22,11 +23,14 @@ public class BrandController {
 	{
 		model.addAttribute("brand", new Brand());
 		model.addAttribute("brandList", brandService.getJsonBrandList());
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/brand";
 	}
 	
 	@Autowired
 	BrandService brandService;
+	@Autowired
+	CategoryService categoryService;
 	
 	@RequestMapping("/addBrand")
 	public String addBrand(Model model,@Valid @ModelAttribute("brand") Brand brand,BindingResult bindingResult)

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ecomm.becasual.dao.ProductDAO;
 import com.ecomm.beecasual.model.Product;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -51,7 +52,7 @@ public class ProductDAOImpl implements ProductDAO {
 		Session session=sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Product> productList=session.createQuery("from Product").getResultList();
-		Gson gson=new Gson();
+		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonProductList=gson.toJson(productList);
 		
 		return jsonProductList;}

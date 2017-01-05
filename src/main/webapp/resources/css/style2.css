@@ -3021,6 +3021,9 @@ input[type="button"].btn-block {
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
+.dropdown:hover .dropdown-menu{
+	display: block;
+}
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
@@ -8020,7 +8023,7 @@ ul.multi-column-dropdown h6 {
 	font-weight:500 !important;
 }
 .dropdown-menu.columns-3 {
-    min-width: 700px;
+    min-width: 400px;
     padding: 30px 30px;
 }
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -10269,8 +10272,8 @@ li.bt-nn h6 {
 .ban-text h4,.ban-text1 h4 {
     font-size: 1.8em;
 }
-.dropdown-menu.columns-3 {
-    left: -205%;
+.dropdown-menu.columns-3{
+    left: -105%;
 }
 .ribben2 {
     top: 14%;

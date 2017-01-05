@@ -70,7 +70,9 @@
 				<div class="container">
 					 <div class="top-left">
 						<a href="#"> Help  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> +0123-456-789</a>
-						${pageContext.request.userPrincipal.name}
+						<c:if test="${!empty pageContext.request.userPrincipal}">
+						<span><a href="#"><i>welcome ${pageContext.request.userPrincipal.name}</i></a></span>
+						</c:if>
 <%-- 						<sec:authorize access="isAuthenticated()"> --%>
 <%-- 						<sec:authentication property="principal.Username"/> --%>
 <%-- 						</sec:authorize> --%>
@@ -111,94 +113,25 @@
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="/BeeCasual/" class="act">Home</a></li>	
 									<!-- Mega Menu -->
+									<c:forEach items="${categoryListDrop}" var="category">
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">${category.categoryName}<b class="caret"></b></a>
+										
 										<ul class="dropdown-menu multi-column columns-3">
-											<div class="row">
-												<div class="col-sm-3  multi-gd-img">
+										
 													<ul class="multi-column-dropdown">
-														<h6>Topwear</h6>
-														<li><a href="/BeeCasual/product.jsp">t-Shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">tps</a></li>
+														<h6>Shop</h6>
+														<c:forEach items="${category.subCategory}" var="sub">
+														<li>${sub.subCategoryName}</li>
+														</c:forEach>
 														</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Bottomwear</h6>
-														<li><a href="/BeeCasual/product.jsp">jeans</a></li>
-														<li><a href="/BeeCasual/product.jsp">skirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">shorts</a></li>
-														
-													</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-														<a href="/becasual/product.jsp"><img src="resources/images/woo1.jpg" alt=" "/></a>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
-										<ul class="dropdown-menu multi-column columns-3">
-											<div class="row">
-												<div class="col-sm-3  multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Topwear</h6>
-														<li><a href="/BeeCasual/product.jsp">t-Shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">tps</a></li>
-															</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Bottomwear</h6>
-														<li><a href="/BeeCasual/product.jsp">jeans</a></li>
-														<li><a href="/BeeCasual/product.jsp">chinos</a></li>
-														<li><a href="/BeeCasual/product.jsp">shorts</a></li>
-														
-													</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-														<a href="/becasual/product.jsp"><img src="resources/images/woo4.jpg" alt=" "/></a>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-										</ul>
-									</li>
-		<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Kids <b class="caret"></b></a>
-										<ul class="dropdown-menu multi-column columns-3">
-											<div class="row">
-												<div class="col-sm-3  multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Topwear</h6>
-														<li><a href="/BeeCasual/product.jsp">t-Shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">shirts</a></li>
-														<li><a href="/BeeCasual/product.jsp">tps</a></li>
-															</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Bottomwear</h6>
-														<li><a href="/BeeCasual/product.jsp">jeans</a></li>
-														<li><a href="/BeeCasual/product.jsp">chinos</a></li>
-														<li><a href="/BeeCasual/product.jsp">shorts</a></li>
-														
-													</ul>
-												</div>
-												<div class="col-sm-3  multi-gd-img">
-														<a href="/becasual/product.jsp"><img src="" alt=" "/></a>
-												</div> 
 												
-												<div class="clearfix"></div>
-											</div>
 										</ul>
+										
 									</li>
-																	
-									<li><a href="mail.html">Mail Us</a></li>
+									</c:forEach>
 								</ul>
+								
 							</div>
 							</nav>
 						</div>

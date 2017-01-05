@@ -21,9 +21,11 @@ public class Category
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int categoryId;
+	@Expose
 	@NotEmpty(message="please enter name")
 	@Pattern(regexp="([a-zA-Z]{1})+[a-zA-Z0-9]+" ,message="enter valid name")
 	private String categoryName;
+	@Expose
 	@NotEmpty(message="please enter description")
 	private String categoryDescription;
 	public int getCategoryId() {

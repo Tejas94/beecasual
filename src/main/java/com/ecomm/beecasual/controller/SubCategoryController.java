@@ -28,6 +28,7 @@ public class SubCategoryController {
 		model.addAttribute("category",new Category());
 		model.addAttribute("categoryList", categoryService.getList());
 		model.addAttribute("subCategoryList",subCategoryService.getJsonSubCategoryList());
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/subCategory";
 	}
 	

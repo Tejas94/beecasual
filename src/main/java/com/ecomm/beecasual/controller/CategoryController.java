@@ -23,6 +23,7 @@ public class CategoryController
 	{
 		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList", categoryService.getJsonList());
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		return "/category";
 	}
 	

@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class SubCategory {
 	
@@ -16,8 +18,10 @@ public class SubCategory {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int subcategoryId;
 	private int categoryId;
+	@Expose
 	@NotEmpty(message="please enter name")
 	private String subCategoryName;
+	@Expose
 	@NotEmpty(message="please enter description")
 	private String subcategoryDescription;
 	
