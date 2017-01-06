@@ -175,5 +175,15 @@ public class ApplicationContextConfig {
     {
     	return new RegistrationHandler();
     }
+    @Bean("shippingAddress")
+    public ShippingAddress shippingAddress()
+    {
+    	return new ShippingAddress();
+    }
+    @Bean("billingAddress")
+    public BillingAddress billingAddress()
+    {
+    	return new BillingAddress();
+    }
 
 }

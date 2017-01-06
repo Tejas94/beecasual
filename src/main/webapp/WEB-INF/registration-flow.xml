@@ -4,11 +4,40 @@
 	  xsi:schemaLocation="http://www.springframework.org/schema/webflow
 						  http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 						  <var name="userDetails" class="com.ecomm.beecasual.model.UserDetails"/>
-						  
+						  <var name="shippingAddress" class="com.ecomm.beecasual.model.ShippingAddress"/>
+						  <var name="billingAddress" class="com.ecomm.beecasual.model.BillingAddress"/>
 						  <on-start >
 						  <evaluate expression="registrationHandler.initFlow()" result="flowScope.userDetails"/>
 						  </on-start>
 						  <view-state id="start" view="register" model="userDetails" >
-						  
+						  <transition on="submit" to="validate"/>
 						  </view-state>
+						  
+						  <action-state id="validate">
+						  <evaluate expression="registrationHandler.validateUser(userDetails,messageContext)"></evaluate>
+						  <transition on="failure" to="start"></transition>
+						  <transition on="success" to="startshippingAddress"></transition>
+						  </action-state>
+						  
+						  <view-state id="startshippingAddress" view="shippingAddress" model="shippingAddress" >
+						  <transition on="submit" to="validate1"/>
+						  </view-state>
+						  
+						  <action-state id="validate1">
+						  <evaluate expression="registrationHandler.validateAddress(shippingAddress,messageContext)"></evaluate>
+						  <transition on="failure" to="shippingAddress"></transition>
+						  <transition on="success" to="startbillingAddress"></transition>
+						  </action-state>
+						  
+						  <view-state id="startbillingAddress" view="billingAddress" model="billingAddress" >
+						  <transition on="submit" to="welcome"></transition>
+						  </view-state>
+						  <action-state id="welcome">
+						  <evaluate expression="registrationHandler.addRegUser(userDetails,billingAddress,shippingAddress)"></evaluate>
+						  <transition on="success" to="tohome"></transition></action-state>
+						  <end-state id="tohome" view="index"></end-state>
 </flow>
+
+
+
+

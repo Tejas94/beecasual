@@ -11,47 +11,47 @@
 </head>
 <body>
 
-	<form:form modelAttribute="userDetails" >
+	<form:form modelAttribute="shippingAddress">
 		<div class="content">
 				<!--login-->
 			<div class="login">
 				<div class="main-agileits" >
 					<div class="form-w3agile form1"   >
-						<h3>Register User</h3>			
+						<h3>Shipping Address</h3>			
 							<div class="key">
 							
-								<form:input type="hidden" path="userId" />
-								<form:input path="userName" placeholder="add username" /><br>
+								<form:input type="hidden" path="shippingId" />
+								<form:input path="flatNo" placeholder="add flatNo" /><br>
 								<div>
-								<form:errors path="userName"></form:errors>
+								<form:errors path="flatNo"></form:errors>
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="key">
-								<form:input type="password" path="password" placeholder="add password" /><br>
-								<form:errors path="password"></form:errors>
+								<form:input  path="street" placeholder="add street" /><br>
+								<form:errors path="street"></form:errors>
 								<div class="clearfix"></div>
 							</div>
 							
 							<div class="key">
-								<form:input  path="firstName" placeholder="add firstName" /><br>
-								<form:errors path="firstName"/>
+								<form:input  path="locatlity" placeholder="add locatlity" /><br>
+								<form:errors path="locatlity"/>
 								<div class="clearfix"></div>
 							</div>
 						
 							<div class="key">
-								<form:input  path="lastName" placeholder="add lastName" /><br>
-								<form:errors path="lastName"/>
+								<form:input  path="city" placeholder="add city" /><br>
+								<form:errors path="city"/>
 								<div class="clearfix"></div>
 							</div>
 							<div class="key">
-								<form:input  path="emailId" placeholder="add emailId" /><br>
-								<form:errors path="emailId"/>
+								<form:input  path="state" placeholder="add state" /><br>
+								<form:errors path="state"/>
 								<div class="clearfix"></div>
 							</div>
 							<div class="key">
-								<form:input  path="contactNo" placeholder="add contactNo" /><br>
-								<form:errors path="contactNo"/>
+								<form:input  path="pincode" placeholder="add pincode" /><br>
+								<form:errors path="pincode"/>
 								<div class="clearfix"></div>
 							</div>
 						<div class="key">
@@ -59,7 +59,7 @@
 							
 							<div class="clearfix"></div>
 						</div>
-						<input name="_eventId_submit" type="submit" value="register"/>
+						<input name="_eventId_submit" type="submit" value="next"/>
 		 			 		
 				</div>
 			</div>
