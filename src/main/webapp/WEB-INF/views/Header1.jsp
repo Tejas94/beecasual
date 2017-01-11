@@ -30,7 +30,7 @@
       });
     });
  </script>
-   <link rel="stylesheet" href="resources/css/style2.css">
+   <link rel="stylesheet" href="resources/css/style2.css" media="screen">
    <!--mycart-->
 <script type="text/javascript" src="resources/jquery/bootstrap-3.1.1.min.js"></script>
  <!-- cart -->
