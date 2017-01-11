@@ -1,5 +1,7 @@
 package com.ecomm.beecasual.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,32 +14,45 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Product {
 	
 	@Id
+	@Expose
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int productId;
+	@Expose
 	private int subcategoryId;
+	@Expose
 	private int categoryId;
+	@Expose
 	private int supplierId;
+	@Expose
 	private int brandId;
+	@Expose
 	@NotEmpty(message="please enter name")
 	private String productName;
+	@Expose
 	@NotEmpty(message="please enter name")
 	private String productDescription;
-
+	@Expose
 	private int productQantity;
+	@Expose
 	private double productPrice;
+	@Expose
 	private double productDiscount;
+	@Expose
 	@Transient
-	private MultipartFile productImage;
+	private List<MultipartFile> productImage;
 	
-	public MultipartFile getProductImage() {
+	
+	public List<MultipartFile> getProductImage() {
 		return productImage;
 	}
 
-	public void setProductImage(MultipartFile productImage) {
+	public void setProductImage(List<MultipartFile> productImage) {
 		this.productImage = productImage;
 	}
 

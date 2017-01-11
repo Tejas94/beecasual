@@ -15,23 +15,29 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ecomm.becasual.daoimpl.BrandDAOImpl;
+import com.ecomm.becasual.daoimpl.CartItemDAOImpl;
 import com.ecomm.becasual.daoimpl.CategoryDAOImpl;
 import com.ecomm.becasual.daoimpl.ProductDAOImpl;
+import com.ecomm.becasual.daoimpl.ProductSpecificationDAOImpl;
 import com.ecomm.becasual.daoimpl.SubCategoryDAOImpl;
 import com.ecomm.becasual.daoimpl.SupplierDAOImpl;
 import com.ecomm.becasual.daoimpl.UserDetailsDAOImpl;
 import com.ecomm.becasual.service.BrandService;
+import com.ecomm.becasual.service.CartItemService;
 import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.becasual.service.ProductService;
+import com.ecomm.becasual.service.ProductSpecificationService;
 import com.ecomm.becasual.service.SubCategoryService;
 import com.ecomm.becasual.service.SupplierService;
 import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.Brand;
 import com.ecomm.beecasual.model.Cart;
+import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.model.Category;
 import com.ecomm.beecasual.model.Product;
 import com.ecomm.beecasual.model.ProductSpecification;
+import com.ecomm.beecasual.model.ProductView;
 import com.ecomm.beecasual.model.Role;
 import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.SubCategory;
@@ -101,6 +107,9 @@ public class ApplicationContextConfig {
         sessionBuilder.addAnnotatedClass(UserRole.class);
         sessionBuilder.addAnnotatedClass(ShippingAddress.class);
         sessionBuilder.addAnnotatedClass(BillingAddress.class);
+        sessionBuilder.addAnnotatedClass(ProductSpecification.class);
+        sessionBuilder.addAnnotatedClass(ProductView.class);
+        sessionBuilder.addAnnotatedClass(CartItem.class);
         return sessionBuilder.buildSessionFactory();
     }
     
@@ -185,5 +194,29 @@ public class ApplicationContextConfig {
     {
     	return new BillingAddress();
     }
+    
+    @Autowired
+    @Bean("productSpecificationDAOImpl")
+    public ProductSpecificationDAOImpl getProductSpecificationDAOImpl(SessionFactory sessionFactory) {
+    	return new ProductSpecificationDAOImpl(sessionFactory);
+    }
+    
+    @Autowired
+    @Bean("productSpecificationService")
+    public ProductSpecificationService getProductSpecificationService() {
+    	return new ProductSpecificationService();
+    }
+    
+    @Bean("cartItemDAOImpl")
+    public CartItemDAOImpl getCartItemDAOImpl(SessionFactory sessionFactory) {
+    	return new CartItemDAOImpl(sessionFactory);
+    }
+    
+    @Autowired
+    @Bean("cartItemService")
+    public CartItemService getCartItemService() {
+    	return new CartItemService();
+    }
+   
 
 }

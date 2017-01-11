@@ -1,9 +1,14 @@
 package com.ecomm.beecasual.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class ProductSpecification {
@@ -15,10 +20,41 @@ public class ProductSpecification {
 	private String pattern;
 	private String fit;
 	private String washcare;
+	private String style;
+	private String size;
+	
+	
+	@Transient
+	private List<MultipartFile> image;
 	
 	@OneToOne
 	@JoinColumn(name="productId", nullable=false,updatable=false, insertable=false)
 	private Product product;
+
+	
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	public List<MultipartFile> getImage() {
+		return image;
+	}
+
+	public void setImage(List<MultipartFile> image) {
+		this.image = image;
+	}
 
 	public int getProductId() {
 		return productId;

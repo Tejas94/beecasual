@@ -8,7 +8,7 @@ public interface UserDetailsDAO {
 	
 	public void addUserDetails(UserDetails userDetails);
 	
-	public int getUserByName(String userName);
+	public UserDetails getUserByName(String userName);
 	
 	public void addRegUserDetails(UserDetails userDetails);
   

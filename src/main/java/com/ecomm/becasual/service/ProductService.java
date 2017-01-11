@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ecomm.becasual.daoimpl.ProductDAOImpl;
 import com.ecomm.beecasual.model.Product;
+import com.ecomm.beecasual.model.ProductView;
 
 @Service
 @Transactional
@@ -35,4 +36,16 @@ public class ProductService {
 		return productDAOImpl.getJsonProductList();
 	}
 
+	public ProductView getProductViewListById(int productId)
+	{
+		return productDAOImpl.getProductViewListById(productId);
+	}
+	
+	public String getProductViewList()
+	{
+		return productDAOImpl.getProductViewList();
+	}
+	public void updateQuantity(int productId){
+		productDAOImpl.updateQuantity(productId);
+	}
 }

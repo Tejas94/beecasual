@@ -40,7 +40,7 @@ function toggle()
 <style type="text/css">
 #productTable{
 display: none;
-max-width: 600px;
+
 
 }
  #buttonchange {
@@ -84,7 +84,7 @@ max-width: 600px;
 </head>
 <body>
 <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
-	<form:form modelAttribute="product" action="addProduct">
+	<form:form modelAttribute="product" action="addProduct" enctype="multipart/form-data">
 		<div class="content">
 				<!--login-->
 			<div class="login">
@@ -123,7 +123,7 @@ max-width: 600px;
 								<div class="clearfix"></div>
 							</div>
 					<div class="key">
-								<form:input type="file" path="productImage"/><br>
+								<input type="file" name="files" multiple="multiple"/><br>
 								
 								<div class="clearfix"></div>
 							</div>
@@ -206,7 +206,9 @@ max-width: 600px;
 <th><input id="buttonchange" type="button" ng-click="sortType= 'productDescription'; sortReverse= !sortReverse" value="Product Description ">
 <span ng-show="sortType== 'productDescription'" ></span>
 </th>
-
+<th><span id="buttonchange" >edit</span></th>
+<th><span id="buttonchange" >delete</span></th>
+<th><span id="buttonchange" >add info</span></th>
 </tr>
 					</thead>
 					<tbody>
@@ -219,6 +221,7 @@ max-width: 600px;
 <td>{{p.productDescription}}</td>
 <td><a href="editProduct-{{p.productId}}">Edit</a></td>
 <td><a href="deleteProduct-{{p.productId}}">Delete</a></td>
+<td><a href="productspecification-{{p.productId}}">add</a></td>
 <tr>
 
 					</tbody>

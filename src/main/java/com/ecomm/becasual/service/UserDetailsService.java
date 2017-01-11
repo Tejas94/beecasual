@@ -21,7 +21,7 @@ public class UserDetailsService {
 		userDetailsDAOImpl.addUserDetails(userDetails);
 	}
 	
-	public int getUserByName(String userName){
+	public UserDetails getUserByName(String userName){
 		
 		return userDetailsDAOImpl.getUserByName(userName);
 	}

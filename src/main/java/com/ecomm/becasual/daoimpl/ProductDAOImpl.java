@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ecomm.becasual.dao.ProductDAO;
 import com.ecomm.beecasual.model.Product;
+import com.ecomm.beecasual.model.ProductView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -55,7 +56,30 @@ public class ProductDAOImpl implements ProductDAO {
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonProductList=gson.toJson(productList);
 		
-		return jsonProductList;}
+		return jsonProductList;
+	}
+	
+	public ProductView getProductViewListById(int productId) {
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ProductView> productListViewById=session.createQuery("from ProductView where productId="+productId).getResultList();
+		return productListViewById.get(0);
+	}
+	
+	public String getProductViewList() {
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ProductView> productListView=session.createQuery("from ProductView").getResultList();
+		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json=gson.toJson(productListView);
+		return json;
+	}
 
-
+	
+	public void updateQuantity(int productId)
+	{
+		
+		String hql="update Product set productQantity= productQantity -1 where productId="+productId;
+		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+	}
 }

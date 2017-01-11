@@ -54,7 +54,7 @@ public class CategoryController
 	public String editCategory(Model model,@PathVariable("categoryId") int categoryId){
 		
 		model.addAttribute("category", categoryService.getListById(categoryId));
-		
+		model.addAttribute("categoryListDrop", categoryService.getList());
 		
 		return "/category";
 		

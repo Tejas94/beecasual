@@ -1,7 +1,15 @@
 <%@ include file="Header1.jsp" %>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script type="text/javascript">
+var myApp=angular.module("myApp",[]);
+myApp.controller("myCtrl",function($scope)
+		{
+		$scope.product=${productViewList};
+		});
+</script>
 
 
-  
+  <div ng-app="myApp" ng-controller="myCtrl">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -100,9 +108,45 @@
 						</div>
 						<div class="clearfix"></div>
 					</div>
-				
-		
-
-
-
+					
+			<div class="new-arrivals-w3agile" ng-repeat="p in product" >
+					<div class="container">
+						<h2 class="tittle">New Arrivals</h2>
+						<div class="arrivals-grids">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
+												<div class="grid-img">
+													<img  src="resources/images/{{p.productId}}-1.jpg" class="img-responsive" alt="">
+												</div>
+												<div class="grid-img">
+													<img  src="resources/images/{{p.productId}}-0.jpg" class="img-responsive"  alt="">
+												</div>			
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben">
+										<p>NEW</p>
+									</div>
+									<div class="ribben1">
+										<p>SALE</p>
+									</div>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<div class="women">
+										<h6><a href="">{{p.productName}}</a></h6>
+										<span class="size">XL / XXL / S </span>
+										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
+										<a href="buyNow-{{p.productId}}?userId=1" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+									</div>
+								</div>
+							</div>
+					</div>
+					</div>
+					</div>
+					
+</div>
 <%@ include file="Footer.jsp" %>

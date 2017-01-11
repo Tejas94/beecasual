@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.ecomm.becasual.dao.UserDetailsDAO;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.Cart;
-import com.ecomm.beecasual.model.Category;
+
 import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.User;
 import com.ecomm.beecasual.model.UserDetails;
@@ -70,14 +70,14 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		
 	}
 
-	public int getUserByName(String userName) {
+	public UserDetails getUserByName(String userName) {
 		Session session=sessionFactory.getCurrentSession();
 		String hql="from UserDetails where userName = "+"'"+userName+"'";
 		@SuppressWarnings("unchecked")
 		List<UserDetails> userDetailsListByName=session.createQuery(hql).getResultList();
-		int count=userDetailsListByName.size();
 		
-		return count;
+		
+		return userDetailsListByName.get(0);
 	}
 	
 	
