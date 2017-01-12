@@ -22,6 +22,7 @@ public class CartItem {
 	private int cartId;
 	@Expose
 	private int productId;
+	@Expose
 	private String productName;
 	@Expose
 	private double productPrice;

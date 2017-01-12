@@ -74,9 +74,6 @@
 						<c:if test="${!empty pageContext.request.userPrincipal}">
 						<span><a href="#"><i>welcome ${pageContext.request.userPrincipal.name}</i></a></span>
 						</c:if>
-<%-- 						<sec:authorize access="isAuthenticated()"> --%>
-<%-- 						<sec:authentication property="principal.Username"/> --%>
-<%-- 						</sec:authorize> --%>
 					</div>
 					<div class="top-right">
 					<ul>

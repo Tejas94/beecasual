@@ -131,16 +131,16 @@ myApp.controller("myCtrl",function($scope)
 										<p>NEW</p>
 									</div>
 									<div class="ribben1">
-										<p>SALE</p>
+										<p><a href="buyNow-{{p.productId}}?userId=1">buyNow</a></p>
 									</div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
 									<div class="women">
-										<h6><a href="">{{p.productName}}</a></h6>
+										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<span class="size">XL / XXL / S </span>
 										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
-										<a href="buyNow-{{p.productId}}?userId=1" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+										<a href="viewproduct-{{p.productId}}" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
 									</div>
 								</div>
 							</div>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ecomm.becasual.service.CartItemService;
@@ -18,6 +19,8 @@ import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.model.Product;
 import com.ecomm.beecasual.model.UserDetails;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class CartItemController {
@@ -50,9 +53,38 @@ public class CartItemController {
 		
 		productService.updateQuantity(productId);
 		
+		session.setAttribute("cartItemId", cartItem.getCartItemId());
+		int cartItemId=(Integer) session.getAttribute("cartItemId");
+		System.out.println("id is "+cartItemId);
+		return "redirect:/cart-"+cartItemId;
 		
-		return "redirect:/cartList";
 	}
 	
 	
+	@RequestMapping("/cart-{cartItemId}")
+	public String cartList(HttpSession session,Model model)
+	{
+		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+		String userName=authentication.getName();
+		int userId=userDetailsService.getUserByName(userName).getUserId();
+		
+		session.setAttribute("userId", userId);
+	    int cartItemId=(Integer) session.getAttribute("cartItemId");
+		
+	    Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String cartList=gson.toJson(cartItemService.getCartItemListById(cartItemId));
+		model.addAttribute("clist",cartList);
+	
+		
+		return "/cartList";
+	}
+	@RequestMapping("/checkout")
+	public String checkout(HttpSession session)
+	{
+		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+		String userName=authentication.getName();
+		int userId=userDetailsService.getUserByName(userName).getUserId();
+		session.setAttribute("userId", userId);
+		return "";
+	}
 }
