@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import com.ecomm.becasual.dao.UserDetailsDAO;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.Cart;
-
 import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.User;
 import com.ecomm.beecasual.model.UserDetails;
@@ -113,14 +112,23 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		
 		
 		session.flush();
-		
-		
-		
-		
-		
-		
+	}
+	
+	
+	public ShippingAddress getShippingListById(int userId) {
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<ShippingAddress> shippingListById=session.createQuery("from ShippingAddress where Userdetails_UserId="+userId).getResultList();
+		return shippingListById.get(0);
 	}
 
+	public BillingAddress getBillingListById(int userId) {
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<BillingAddress> billingListById=session.createQuery("from BillingAddress where Userdetails_UserId="+userId).getResultList();
+		return billingListById.get(0);
+	}
+	
 	public void addShippingAddress(ShippingAddress shippingAddress) {
 		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);
 		

@@ -42,4 +42,16 @@ public class UserDetailsService {
 		userDetailsDAOImpl.addBillingAddress(billingAddress);
 	};
 	
+	public ShippingAddress getShippingListById(int userId)
+	{
+		return userDetailsDAOImpl.getShippingListById(userId);
+
+	}
+	
+	public BillingAddress getBillingListById(int userId)
+	{
+		
+		return userDetailsDAOImpl.getBillingListById(userId);
+	}
 }
+

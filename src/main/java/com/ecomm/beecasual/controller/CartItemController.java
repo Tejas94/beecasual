@@ -79,12 +79,12 @@ public class CartItemController {
 		return "/cartList";
 	}
 	@RequestMapping("/checkout")
-	public String checkout(HttpSession session)
+	public String checkout(HttpSession session,@RequestParam("userId")int userId)
 	{
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		String userName=authentication.getName();
-		int userId=userDetailsService.getUserByName(userName).getUserId();
+		userId=userDetailsService.getUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
-		return "";
+		return "redirect:/cart?userId="+userId;
 	}
 }

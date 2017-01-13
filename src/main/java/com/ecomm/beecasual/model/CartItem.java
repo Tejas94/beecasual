@@ -1,5 +1,7 @@
 package com.ecomm.beecasual.model;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.ManyToOne;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class CartItem {
+public class CartItem implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Expose

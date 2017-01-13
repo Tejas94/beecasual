@@ -34,6 +34,7 @@ myApp.controller("myCtrl",function($scope)
 								</ul>
 									 <div class="delivery">
 									 <p>Service Charges : $10.00</p>
+									 <span><h3><a href="/BeeCasual/checkout?userId=${sessionScope.userId}">Checkout</a></h3></span><br>
 									 <span>Delivered in 1-1:30 hours</span>
 									 <div class="clearfix"></div>
 								</div>	

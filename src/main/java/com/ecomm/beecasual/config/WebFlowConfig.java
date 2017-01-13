@@ -33,7 +33,8 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 	public FlowDefinitionRegistry flowRegistry() {
 		return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setFlowBuilderServices(flowBuilderServices())
 				.setBasePath("/WEB-INF")
-				.addFlowLocation("/registration-flow.xml","reg").
+				.addFlowLocation("/registration-flow.xml","reg")
+				.addFlowLocation("/cart-flow.xml","cart").
 				build();
 	}
 

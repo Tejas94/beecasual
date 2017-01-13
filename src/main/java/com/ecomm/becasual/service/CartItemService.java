@@ -22,4 +22,9 @@ public class CartItemService {
 		return cartItemDAOImpl.getCartItemListById(cartItemId);
 	}
 	
+	public void updateFlag(int cartItemId)
+	{
+		cartItemDAOImpl.updateFlag(cartItemId);
+	}
+	
 }

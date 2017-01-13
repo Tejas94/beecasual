@@ -178,17 +178,20 @@ public class ApplicationContextConfig {
     public UserDetailsService getUserDetailsService() {
     	return new UserDetailsService();
     }
-    
+    @Autowired
     @Bean("registrationHandler")
     public RegistrationHandler registrationHandler()
     {
     	return new RegistrationHandler();
     }
+        
+    @Autowired
     @Bean("shippingAddress")
     public ShippingAddress shippingAddress()
     {
     	return new ShippingAddress();
     }
+    @Autowired
     @Bean("billingAddress")
     public BillingAddress billingAddress()
     {
@@ -206,7 +209,7 @@ public class ApplicationContextConfig {
     public ProductSpecificationService getProductSpecificationService() {
     	return new ProductSpecificationService();
     }
-    
+    @Autowired
     @Bean("cartItemDAOImpl")
     public CartItemDAOImpl getCartItemDAOImpl(SessionFactory sessionFactory) {
     	return new CartItemDAOImpl(sessionFactory);
@@ -218,5 +221,10 @@ public class ApplicationContextConfig {
     	return new CartItemService();
     }
    
-
+    @Autowired
+    @Bean("cartFlowHandler")
+    public CartFlowHandler cartFlowHandler()
+    {
+    	return new CartFlowHandler();
+    }
 }
