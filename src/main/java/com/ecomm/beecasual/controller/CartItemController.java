@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ecomm.becasual.service.CartItemService;
-import com.ecomm.becasual.service.ProductService;
-import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.model.Product;
 import com.ecomm.beecasual.model.UserDetails;
+import com.ecomm.beecasual.service.CartItemService;
+import com.ecomm.beecasual.service.ProductService;
+import com.ecomm.beecasual.service.UserDetailsService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -51,7 +51,7 @@ public class CartItemController {
 		cartItemService.addCartItem(cartItem);
 		
 		
-		productService.updateQuantity(productId);
+		productService.updateQuantity(productId,cartItem.getProductQuantity());
 		
 		session.setAttribute("cartItemId", cartItem.getCartItemId());
 		int cartItemId=(Integer) session.getAttribute("cartItemId");
@@ -86,5 +86,32 @@ public class CartItemController {
 		userId=userDetailsService.getUserByName(userName).getUserId();
 		session.setAttribute("userId", userId);
 		return "redirect:/cart?userId="+userId;
+	}
+	@RequestMapping("/addCart-{productId}")
+	public String addCart(Model model,@PathVariable("productId") int productId,@ModelAttribute("cartItem") CartItem cartItem,@RequestParam("userId") int userId,Product product,HttpSession session)
+	{
+		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+		String userName=authentication.getName();
+		userDetailsService.getUserByName(userName);
+		userId=userDetailsService.getUserByName(userName).getUserId();
+		cartItem.setCartId(userId);
+		cartItem.setUserId(userId);
+		cartItem.setFlag(false);
+		cartItem.setProductId(productId);
+		double price=productService.getProductListById(productId).getProductPrice();
+		String productName=productService.getProductListById(productId).getProductName();
+		cartItem.setProductName(productName);
+		cartItem.setProductPrice(price);
+		
+		cartItemService.addCartItem(cartItem);
+		
+	
+		
+		session.setAttribute("cartItemId", cartItem.getCartItemId());
+		int cartItemId=(Integer) session.getAttribute("cartItemId");
+		System.out.println("id is "+cartItemId);
+		
+		
+		return "/cartItems-"+cartItemId;
 	}
 }

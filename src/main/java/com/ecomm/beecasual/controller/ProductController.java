@@ -16,12 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ecomm.becasual.service.BrandService;
-import com.ecomm.becasual.service.CategoryService;
-import com.ecomm.becasual.service.ProductService;
-import com.ecomm.becasual.service.ProductSpecificationService;
-import com.ecomm.becasual.service.SubCategoryService;
-import com.ecomm.becasual.service.SupplierService;
 import com.ecomm.beecasual.model.Brand;
 import com.ecomm.beecasual.model.Category;
 import com.ecomm.beecasual.model.Product;
@@ -29,6 +23,12 @@ import com.ecomm.beecasual.model.ProductSpecification;
 import com.ecomm.beecasual.model.ProductView;
 import com.ecomm.beecasual.model.SubCategory;
 import com.ecomm.beecasual.model.Supplier;
+import com.ecomm.beecasual.service.BrandService;
+import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.ProductService;
+import com.ecomm.beecasual.service.ProductSpecificationService;
+import com.ecomm.beecasual.service.SubCategoryService;
+import com.ecomm.beecasual.service.SupplierService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

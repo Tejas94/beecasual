@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ecomm.becasual.service.CategoryService;
 import com.ecomm.beecasual.model.Category;
+import com.ecomm.beecasual.service.CategoryService;
 
 @Controller
 public class CategoryController 

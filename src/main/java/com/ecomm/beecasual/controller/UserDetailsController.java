@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ecomm.becasual.service.CategoryService;
-import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.UserDetails;
+import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.UserDetailsService;
 
 @Controller
 public class UserDetailsController {

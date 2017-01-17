@@ -128,7 +128,7 @@ myApp.controller("myCtrl",function($scope)
 										</figure>	
 									</div>
 									<div class="ribben">
-										<p>NEW</p>
+										<p><a href="wishList-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-heart"></span></a></p>
 									</div>
 									<div class="ribben1">
 										<p><a href="buyNow-{{p.productId}}?userId=1">buyNow</a></p>

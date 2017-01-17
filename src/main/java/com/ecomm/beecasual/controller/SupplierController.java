@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ecomm.becasual.service.CategoryService;
-import com.ecomm.becasual.service.SupplierService;
-
 import com.ecomm.beecasual.model.Supplier;
+import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.SupplierService;
 
 @Controller
 public class SupplierController {

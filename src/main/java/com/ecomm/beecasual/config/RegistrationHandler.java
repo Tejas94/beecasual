@@ -5,10 +5,10 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
-import com.ecomm.becasual.service.UserDetailsService;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.ShippingAddress;
 import com.ecomm.beecasual.model.UserDetails;
+import com.ecomm.beecasual.service.UserDetailsService;
 
 @Component
 public class RegistrationHandler {

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ecomm.becasual.service.CategoryService;
-import com.ecomm.becasual.service.ProductService;
+import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.ProductService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

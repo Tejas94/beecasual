@@ -14,22 +14,15 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.ecomm.becasual.daoimpl.BrandDAOImpl;
-import com.ecomm.becasual.daoimpl.CartItemDAOImpl;
-import com.ecomm.becasual.daoimpl.CategoryDAOImpl;
-import com.ecomm.becasual.daoimpl.ProductDAOImpl;
-import com.ecomm.becasual.daoimpl.ProductSpecificationDAOImpl;
-import com.ecomm.becasual.daoimpl.SubCategoryDAOImpl;
-import com.ecomm.becasual.daoimpl.SupplierDAOImpl;
-import com.ecomm.becasual.daoimpl.UserDetailsDAOImpl;
-import com.ecomm.becasual.service.BrandService;
-import com.ecomm.becasual.service.CartItemService;
-import com.ecomm.becasual.service.CategoryService;
-import com.ecomm.becasual.service.ProductService;
-import com.ecomm.becasual.service.ProductSpecificationService;
-import com.ecomm.becasual.service.SubCategoryService;
-import com.ecomm.becasual.service.SupplierService;
-import com.ecomm.becasual.service.UserDetailsService;
+import com.ecomm.beecasual.daoimpl.BrandDAOImpl;
+import com.ecomm.beecasual.daoimpl.CartItemDAOImpl;
+import com.ecomm.beecasual.daoimpl.CategoryDAOImpl;
+import com.ecomm.beecasual.daoimpl.ProductDAOImpl;
+import com.ecomm.beecasual.daoimpl.ProductSpecificationDAOImpl;
+import com.ecomm.beecasual.daoimpl.SubCategoryDAOImpl;
+import com.ecomm.beecasual.daoimpl.SupplierDAOImpl;
+import com.ecomm.beecasual.daoimpl.UserDetailsDAOImpl;
+import com.ecomm.beecasual.daoimpl.WishListDAOImpl;
 import com.ecomm.beecasual.model.BillingAddress;
 import com.ecomm.beecasual.model.Brand;
 import com.ecomm.beecasual.model.Cart;
@@ -45,6 +38,16 @@ import com.ecomm.beecasual.model.Supplier;
 import com.ecomm.beecasual.model.User;
 import com.ecomm.beecasual.model.UserDetails;
 import com.ecomm.beecasual.model.UserRole;
+import com.ecomm.beecasual.model.WishList;
+import com.ecomm.beecasual.service.BrandService;
+import com.ecomm.beecasual.service.CartItemService;
+import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.ProductService;
+import com.ecomm.beecasual.service.ProductSpecificationService;
+import com.ecomm.beecasual.service.SubCategoryService;
+import com.ecomm.beecasual.service.SupplierService;
+import com.ecomm.beecasual.service.UserDetailsService;
+import com.ecomm.beecasual.service.WishListService;
  
 @Configuration
 @EnableTransactionManagement
@@ -110,6 +113,7 @@ public class ApplicationContextConfig {
         sessionBuilder.addAnnotatedClass(ProductSpecification.class);
         sessionBuilder.addAnnotatedClass(ProductView.class);
         sessionBuilder.addAnnotatedClass(CartItem.class);
+        sessionBuilder.addAnnotatedClass(WishList.class);
         return sessionBuilder.buildSessionFactory();
     }
     
@@ -227,4 +231,19 @@ public class ApplicationContextConfig {
     {
     	return new CartFlowHandler();
     }
+    
+    
+    @Autowired
+    @Bean("wishListDAOImpl")
+    public WishListDAOImpl getWishListDAOImpl(SessionFactory sessionFactory) {
+    	return new WishListDAOImpl(sessionFactory);
+    }
+    
+    @Autowired
+    @Bean("wishListService")
+    public WishListService getWishListService() {
+    	return new WishListService();
+    }
+   
+
 }
