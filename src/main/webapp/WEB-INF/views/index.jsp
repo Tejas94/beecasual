@@ -140,7 +140,7 @@ myApp.controller("myCtrl",function($scope)
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<span class="size">XL / XXL / S </span>
 										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
-										<a href="viewproduct-{{p.productId}}" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+										<a href="addCart-{{p.productId}}?userId=1" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
 									</div>
 								</div>
 							</div>

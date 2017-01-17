@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ecomm.beecasual.dao.CartItemDAO;
 import com.ecomm.beecasual.model.CartItem;
 
+
 @Repository
 public class CartItemDAOImpl implements CartItemDAO {
 		@Autowired
@@ -39,4 +40,13 @@ public class CartItemDAOImpl implements CartItemDAO {
 			sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 		
 		}
+		
+		public List<CartItem> getCartItemList(int userId) {
+			Session session=sessionFactory.getCurrentSession();
+			@SuppressWarnings("unchecked")
+			List<CartItem> cartItemList=session.createQuery("from CartItem where userId="+userId+"and Flag=false").getResultList();
+			
+			return cartItemList;
+		}
+
 }

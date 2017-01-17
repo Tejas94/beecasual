@@ -88,7 +88,7 @@ public class CartItemController {
 		return "redirect:/cart?userId="+userId;
 	}
 	@RequestMapping("/addCart-{productId}")
-	public String addCart(Model model,@PathVariable("productId") int productId,@ModelAttribute("cartItem") CartItem cartItem,@RequestParam("userId") int userId,Product product,HttpSession session)
+	public String addCart(@ModelAttribute("cartItems") CartItem cartItem,@RequestParam("userId") int userId,@PathVariable("productId") int productId,Product product,HttpSession session)
 	{
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		String userName=authentication.getName();
@@ -112,6 +112,24 @@ public class CartItemController {
 		System.out.println("id is "+cartItemId);
 		
 		
-		return "/cartItems-"+cartItemId;
+		return "redirect:/cartItems-"+cartItemId;
+	}
+	
+	@RequestMapping("/cartItems-{cartItemId}")
+	public String showCart(HttpSession session,Model model)
+	{
+		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+		String userName=authentication.getName();
+		int userId=userDetailsService.getUserByName(userName).getUserId();
+		
+		session.setAttribute("userId", userId);
+	    int cartItemId=(Integer) session.getAttribute("cartItemId");
+		
+	    Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String showCartList=gson.toJson(cartItemService.getCartItemList(userId));
+		model.addAttribute("slist",showCartList);
+	
+		
+		return "/cartItems";
 	}
 }

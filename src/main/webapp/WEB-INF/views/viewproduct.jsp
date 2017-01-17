@@ -15,6 +15,7 @@ $(window).load(function() {
   });
 });
 </script>
+
 <script type="text/javascript">
 var myApp=angular.module("myApp",[]);
 myApp.controller("myCtrl",function($scope)
@@ -68,20 +69,27 @@ turpis ac justo porta varius. Donec vel felis ante, ac vehicula ipsum. Quisque s
 
 Vivamus et sapien ante. Suspendisse potenti. Fusce in tellus est, ac consequat.</p>
 									</div>
+									<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
 										<h6>Quantity :</h6>
-											<div class="quantity"> 
-												<div class="quantity-select">                           
-													<div class="entry value-minus1">&nbsp;</div>
-													<div class="entry value1"><span>1</span></div>
-													<div class="entry value-plus1 active">&nbsp;</div>
-												</div>
-											</div>
+										<div>
+										
+										<form:input path="productQuantity" type="number" value="1"/>
+										
+										</div>
+<!-- 											<div class="quantity">  -->
+<!-- 												<div class="quantity-select">                            -->
+<!-- 													<div class="entry value-minus1">&nbsp;</div> -->
+<!-- 													<div class="entry value1"><span>1</span></div> -->
+<!-- 													<div class="entry value-plus1 active">&nbsp;</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
 									</div>
 									<div class="women">
 										<span class="size">XL / XXL / S </span>
-										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+								<span class="my-cart-b item_add"><input type="submit" value="add"></span>
 									</div>
+									</form:form>
 									<div class="social-icon">
 										<a href="#"><i class="icon"></i></a>
 										<a href="#"><i class="icon1"></i></a>

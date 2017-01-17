@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ecomm.beecasual.model.Brand;
+import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.model.Category;
 import com.ecomm.beecasual.model.Product;
 import com.ecomm.beecasual.model.ProductSpecification;
@@ -160,12 +162,13 @@ public class ProductController {
 		
 		
 		@RequestMapping("/viewproduct-{productId}")
-		public String viewProduct(Model model,@PathVariable("productId") int productId)
+		public String viewProduct(Model model,@PathVariable("productId") int productId,@ModelAttribute("cartItems") CartItem cartItem, HttpSession session)
 		{
 			
 			Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			String viewlist= gson.toJson(productService.getProductViewListById(productId));
 			model.addAttribute("product",viewlist);
+			session.setAttribute("productId", productId);
 			
 			return "/viewproduct";
 			
