@@ -97,6 +97,10 @@ public class CartItemController {
 		cartItem.setCartId(userId);
 		cartItem.setUserId(userId);
 		cartItem.setFlag(false);
+		if(cartItem.getProductQuantity()==0)
+		{
+			cartItem.setProductQuantity(1);
+		}
 		cartItem.setProductId(productId);
 		double price=productService.getProductListById(productId).getProductPrice();
 		String productName=productService.getProductListById(productId).getProductName();
@@ -105,7 +109,7 @@ public class CartItemController {
 		
 		cartItemService.addCartItem(cartItem);
 		
-	
+		productService.updateQuantity(productId,cartItem.getProductQuantity());
 		
 		session.setAttribute("cartItemId", cartItem.getCartItemId());
 		int cartItemId=(Integer) session.getAttribute("cartItemId");
@@ -131,5 +135,12 @@ public class CartItemController {
 	
 		
 		return "/cartItems";
+	}
+	
+	@RequestMapping("/deleteCartItem-{cartItemId}")
+	public String deleteCartItem(@PathVariable("cartItemId")  int cartItemId)
+	{
+		cartItemService.deleteCartItem(cartItemId);
+		return "redirect:/cartItems-"+cartItemId;
 	}
 }

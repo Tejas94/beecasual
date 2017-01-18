@@ -11,6 +11,7 @@ import com.ecomm.beecasual.dao.CartItemDAO;
 import com.ecomm.beecasual.model.CartItem;
 
 
+
 @Repository
 public class CartItemDAOImpl implements CartItemDAO {
 		@Autowired
@@ -48,5 +49,11 @@ public class CartItemDAOImpl implements CartItemDAO {
 			
 			return cartItemList;
 		}
-
+		
+		public void deleteCartItem(int cartItemId) {
+			CartItem cartItemToDelete= new CartItem();
+			cartItemToDelete.setCartItemId(cartItemId);
+			sessionFactory.getCurrentSession().delete(cartItemToDelete);
+			
+		}
 }

@@ -75,8 +75,9 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		@SuppressWarnings("unchecked")
 		List<UserDetails> userDetailsListByName=session.createQuery(hql).getResultList();
 		
+			return userDetailsListByName.get(0);
 		
-		return userDetailsListByName.get(0);
+		
 	}
 	
 	

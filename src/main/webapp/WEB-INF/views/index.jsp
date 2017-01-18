@@ -77,6 +77,8 @@ myApp.controller("myCtrl",function($scope)
 						</div>
 						</div>
 		<br>
+		
+		
 		<div class="row">
 		<div class="col-md-6 ban-bottom">
 							<div class="ban-top">

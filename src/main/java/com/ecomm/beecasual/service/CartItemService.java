@@ -33,4 +33,9 @@ public class CartItemService {
 	{
 		return cartItemDAOImpl.getCartItemList(userId);
 	}
+	
+	public void deleteCartItem(int cartItemId)
+	{
+		cartItemDAOImpl.deleteCartItem(cartItemId);
+	}
 }

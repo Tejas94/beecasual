@@ -28,8 +28,19 @@ myApp.controller("myCtrl",function($scope)
 </head>
 <body>
 <div class="content" ng-app="myApp" ng-controller="myCtrl">
+
+
 			<!--single-->
 			<div class="single-wl3">
+			<div>
+<ol class="breadcrumb">
+    <li><a href="#"><b>Home</b></a>
+    </li>
+    <li><a href="#"><b>ViewProduct</b></a>
+    </li>
+    <li class="active"><b>{{product.productName}}</b></li>
+</ol>
+</div>
 				<div class="container">
 					<div class="single-grids">
 						<div class="col-md-12 single-grid">
@@ -61,7 +72,7 @@ class="img-responsive"> </div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
-									<p class="price item_price">Rs.{{product.productPrice}}</p>
+									<p class="price item_price">&#x20b9;{{product.productPrice}}</p>
 									<div class="description">
 										<p><span>Quick Overview : </span> In cursus faucibus tortor eu vestibulum. Ut eget 
 
@@ -87,7 +98,8 @@ Vivamus et sapien ante. Suspendisse potenti. Fusce in tellus est, ac consequat.<
 									</div>
 									<div class="women">
 										<span class="size">XL / XXL / S </span>
-								<span class="my-cart-b item_add"><input type="submit" value="add"></span>
+								<input type="submit" value="Add To Bag" class="btn-blue-blue-white" >
+								<a href="buyNow-{{product.productId}}?userId=1"><input class="btn-blue-dark" type="button" value="Buy Now"></a>
 									</div>
 									</form:form>
 									<div class="social-icon">

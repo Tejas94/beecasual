@@ -21,7 +21,7 @@ myApp.controller("myCtrl",function($scope)
 					 <h2>My Shopping Bag</h2>
 						
 					 <div class="cart-header" ng-repeat="s in slist">
-						 <div class="close1"> </div>
+						 <div class="close1"><a href="deleteCartItem-{{s.cartItemId}}"><span class="glyphicon glyphicon-remove" ></span></a> </div>
 						 <div class="cart-sec simpleCart_shelfItem">
 								<div class="cart-item cyc">
 									 <img src="resources/images/{{s.productId}}-0.jpg" class="img-responsive" alt="">
