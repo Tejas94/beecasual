@@ -32,7 +32,16 @@ public class CartItem implements Serializable{
 	private int productQuantity;
 	@Expose
 	private boolean flag;
+	@Expose
+	private String productSize;
 	
+	
+	public String getProductSize() {
+		return productSize;
+	}
+	public void setProductSize(String productSize) {
+		this.productSize = productSize;
+	}
 	@Expose
 	@ManyToOne
 	@JoinColumn(name="cartId",nullable=false,insertable=false,updatable=false)

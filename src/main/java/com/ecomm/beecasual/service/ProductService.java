@@ -48,4 +48,9 @@ public class ProductService {
 	public void updateQuantity(int productId,int quantity){
 		productDAOImpl.updateQuantity(productId,quantity);
 	}
+	
+	public void updateQuantity1(int productId,int quantity)
+	{
+		productDAOImpl.updateQuantity1(productId, quantity);
+	}
 }

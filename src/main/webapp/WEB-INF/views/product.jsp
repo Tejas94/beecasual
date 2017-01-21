@@ -84,7 +84,7 @@ display: none;
 </head>
 <body>
 <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl" align="center">
-	<form:form modelAttribute="product" action="addProduct" enctype="multipart/form-data">
+	<form:form modelAttribute="product" action="addProduct" enctype="multipart/form-data" >
 		<div class="content">
 				<!--login-->
 			<div class="login">
@@ -123,7 +123,7 @@ display: none;
 								<div class="clearfix"></div>
 							</div>
 					<div class="key">
-								<input type="file" name="files" multiple="multiple"/><br>
+								<input type="file" name="files" multiple="multiple" ><br>
 								
 								<div class="clearfix"></div>
 							</div>

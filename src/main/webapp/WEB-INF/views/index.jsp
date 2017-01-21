@@ -111,20 +111,20 @@ myApp.controller("myCtrl",function($scope)
 						<div class="clearfix"></div>
 					</div>
 					
-			<div class="new-arrivals-w3agile" ng-repeat="p in product" >
+			<div class="new-arrivals-w3agile"  >
 					<div class="container">
 						<h2 class="tittle">New Arrivals</h2>
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		
 											<a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
 												<div class="grid-img">
-													<img  src="resources/images/{{p.productId}}-1.jpg" class="img-responsive" alt="">
+													<img  src="resources/images/{{p.productId}}-1.jpg" class="" alt="">
 												</div>
 												<div class="grid-img">
-													<img  src="resources/images/{{p.productId}}-0.jpg" class="img-responsive"  alt="">
+													<img  src="resources/images/{{p.productId}}-0.jpg" class=""   alt="">
 												</div>			
 											</a>		
 										</figure>	

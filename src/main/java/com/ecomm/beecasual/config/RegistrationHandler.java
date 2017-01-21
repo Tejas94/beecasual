@@ -27,6 +27,14 @@ public class RegistrationHandler {
     	public String validateUser(UserDetails userDetails,MessageContext messageContext)
     	{
     		String status  = "success";
+    		int count=userDetailsService.checkUser(userDetails.getUserName());
+    		
+    		if(count==1)
+    		{
+    			messageContext.addMessage(new MessageBuilder().error().source(
+    					"userName").defaultText("userName already exists").build());
+    			status="failure";
+    		}
     		if(userDetails.getFirstName().isEmpty())
     		{
     			messageContext.addMessage(new MessageBuilder().error().source(

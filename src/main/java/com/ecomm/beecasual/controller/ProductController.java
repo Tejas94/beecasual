@@ -96,22 +96,22 @@ public class ProductController {
         
         
         
-        
+        System.out.println("1");
         List<MultipartFile> files=productImage;
         
         for( int i=0;i<=files.size();i++)
         {
         try{
         	MultipartFile multipartFile=files.get(i);
-        	String path="D:\\tejas\\ecomm\\BeeCasual\\src\\main\\webapp\\resources\\images\\";
+        	String path="D:\\work\\ecomm\\BeeCasual\\src\\main\\webapp\\resources\\images\\";
             path=path+String.valueOf(product.getProductId()+"-"+i+".jpg");
             java.io.File file= new java.io.File(path);
             byte[] bytes;
-        bytes = multipartFile.getBytes();
-        FileOutputStream fos = new FileOutputStream(file);
-        BufferedOutputStream bos= new BufferedOutputStream(fos);
-        bos.write(bytes);
-        bos.close();
+            bytes = multipartFile.getBytes();
+            FileOutputStream fos = new FileOutputStream(file);
+            BufferedOutputStream bos= new BufferedOutputStream(fos);
+            bos.write(bytes);
+            bos.close();
         }
         catch(Exception e)
         {
@@ -122,6 +122,7 @@ public class ProductController {
 		return "redirect:/product";
 		
 		}	
+		
 		}
 		
 		@RequestMapping("/editProduct-{productId}")

@@ -38,4 +38,13 @@ public class CartItemService {
 	{
 		cartItemDAOImpl.deleteCartItem(cartItemId);
 	}
+	public int getCartOnce(int productId,String productSize,int userId)
+	{
+		return cartItemDAOImpl.getCartOnce(productId, productSize,userId);
+	}
+	public CartItem getCartOnceName(int productId,String productSize,int userId)
+	{
+		return cartItemDAOImpl.getCartOnceName(productId, productSize, userId);
+	}
+
 }

@@ -139,5 +139,15 @@ public class UserDetailsDAOImpl implements UserDetailsDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(billingAddress);
 		
 	}
+	
+	public int checkUser(String userName)
+	{
+		
+		Session session=sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<UserDetails> usernamecheck=session.createQuery("from UserDetails where userName='"+userName+"'").getResultList();
+		int count=usernamecheck.size();
+		return count;
+	}
 
 }

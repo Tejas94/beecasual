@@ -56,4 +56,21 @@ public class CartItemDAOImpl implements CartItemDAO {
 			sessionFactory.getCurrentSession().delete(cartItemToDelete);
 			
 		}
+		
+		public int getCartOnce(int productId,String productSize,int userId)
+		{
+			Session session=sessionFactory.getCurrentSession();
+			@SuppressWarnings("unchecked")
+			List<CartItem> cartItemProduct=session.createQuery("from CartItem where productId="+productId+"and productSize='"+productSize+"' and userId="+userId).getResultList();
+			int count=cartItemProduct.size();
+			return count;
+		}
+		
+		public CartItem getCartOnceName(int productId,String productSize,int userId)
+		{
+			Session session=sessionFactory.getCurrentSession();
+			@SuppressWarnings("unchecked")
+			List<CartItem> cartItemProduct=session.createQuery("from CartItem where productId="+productId+"and productSize='"+productSize+"' and userId="+userId).getResultList();
+			return cartItemProduct.get(0);
+		}
 }

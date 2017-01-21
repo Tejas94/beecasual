@@ -23,7 +23,41 @@ myApp.controller("myCtrl",function($scope)
 		$scope.product=${product};
 		});
 </script>
+<script type="text/javascript">
+function clickdata()
+{
+var d=document.getElementById("radio").value;
+document.getElementById("radio1").value=d;
+}
+</script>
+<script type="text/javascript">
+function clickdata1()
+{
+var e=document.getElementById("radio2").value;
+document.getElementById("radio1").value=e;
+}
+</script>
+<script type="text/javascript">
+function clickdata2()
+{
+var f=document.getElementById("radio4").value;
+document.getElementById("radio1").value=f;
+}
+</script>
+<script type="text/javascript">
+function clickdata3()
+{
+var g=document.getElementById("radio6").value;
+document.getElementById("radio1").value=g;
+}
+</script>
+<script type="text/javascript">
+function clickdata4()
+{
+document.getElementById("radio1").value=document.getElementById("radio8").value;
+}
 
+</script>
 
 </head>
 <body>
@@ -73,19 +107,40 @@ class="img-responsive"> </div>
 										<div class="starbox small ghosting"> </div>
 									</div>
 									<p class="price item_price">&#x20b9;{{product.productPrice}}</p>
-									<div class="description">
-										<p><span>Quick Overview : </span> In cursus faucibus tortor eu vestibulum. Ut eget 
-
-turpis ac justo porta varius. Donec vel felis ante, ac vehicula ipsum. Quisque sed diam metus. Quisque eget leo sit amet erat varius rutrum vitae dapibus lectus. 
-
-Vivamus et sapien ante. Suspendisse potenti. Fusce in tellus est, ac consequat.</p>
-									</div>
-									<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
+								<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
+									<div>
+									<h6><span class="btn-radio">Size</span></h6>
+									<div>
+									
+										<form:input path="productSize"  id="radio1" type="hidden"  />
+										<input type="button" value="S" class="btn-radio" onclick="clickdata()" id="radio">
+										
+										<form:input path="productSize"  id="radio1" type="hidden" />
+										<input type="button" value="M" class="btn-radio" onclick="clickdata1()" id="radio2">
+										
+										<form:input path="productSize"  id="radio1" type="hidden" />
+										<input type="button" value="L" class="btn-radio" onclick="clickdata2()" id="radio4">
+										
+										<form:input path="productSize"  id="radio1" type="hidden" />
+										<input type="button" value="XL" class="btn-radio" onclick="clickdata3()" id="radio6">
+										
+										<form:input path="productSize"  id="radio1" type="hidden" />
+										<input type="button" value="XXL" class="btn-radio" onclick="clickdata4()" id="radio8">
+									
+
+									
+									</div>
+									
+									
+									
+									</div>
+									
 										<h6>Quantity :</h6>
 										<div>
 										
-										<form:input path="productQuantity" type="number" value="1"/>
+										<form:input path="productQuantity" type="number" value="1"/>	
+										
 										
 										</div>
 <!-- 											<div class="quantity">  -->

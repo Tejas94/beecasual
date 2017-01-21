@@ -82,4 +82,15 @@ public class ProductDAOImpl implements ProductDAO {
 		String hql="update Product set productQantity= productQantity -"+quantity+" where productId="+productId;
 		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 	}
+	
+	public void updateQuantity1(int productId,int quantity)
+	{
+		
+		String hql="update Product set productQantity= productQantity +"+quantity+" where productId="+productId;
+		sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+	}
+
+
 }
+
+

@@ -53,5 +53,12 @@ public class UserDetailsService {
 		
 		return userDetailsDAOImpl.getBillingListById(userId);
 	}
+	
+	public int checkUser(String userName)
+	{
+		return userDetailsDAOImpl.checkUser(userName);
+				
+		
+	}
 }
 

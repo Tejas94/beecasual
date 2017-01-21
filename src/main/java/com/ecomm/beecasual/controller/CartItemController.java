@@ -90,6 +90,16 @@ public class CartItemController {
 	@RequestMapping("/addCart-{productId}")
 	public String addCart(@ModelAttribute("cartItems") CartItem cartItem,@RequestParam("userId") int userId,@PathVariable("productId") int productId,Product product,HttpSession session)
 	{
+		int cartItemId;
+		int count=cartItemService.getCartOnce(productId,cartItem.getProductSize(),userId);
+		if(count==1)
+		{
+			cartItemId = cartItemService.getCartOnceName(productId, cartItem.getProductSize(), userId).getCartItemId();
+			productService.updateQuantity1(productId, cartItem.getProductQuantity());
+			
+		}
+		else
+		{
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		String userName=authentication.getName();
 		userDetailsService.getUserByName(userName);
@@ -110,10 +120,11 @@ public class CartItemController {
 		cartItemService.addCartItem(cartItem);
 		
 		productService.updateQuantity(productId,cartItem.getProductQuantity());
+		cartItemId = cartItem.getCartItemId();
+		}
 		
-		session.setAttribute("cartItemId", cartItem.getCartItemId());
-		int cartItemId=(Integer) session.getAttribute("cartItemId");
-		System.out.println("id is "+cartItemId);
+		
+		session.setAttribute("cartItemId", cartItemId);
 		
 		
 		return "redirect:/cartItems-"+cartItemId;
