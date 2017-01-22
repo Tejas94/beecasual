@@ -11,6 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="resources/js/angular.min.js" ></script>
+<script src="resources/js/ui-bootstrap.js" ></script>
 <script src="resources/jquery/jquery.min.js"></script>
 <script src="resources/jquery/bootstrap.js"></script>
 <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
 	<script src="resources/jquery/main.js"></script>
 <!--search jQuery-->
 <script src="resources/jquery/responsiveslides.min.js"></script>
+<script src="resources/jquery/typeahead.bundle.js"></script>
  <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -60,6 +62,8 @@
 			});
 		});
 		</script>
+		
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!--//End-rate-->
   
   
@@ -116,6 +120,8 @@
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">${category.categoryName}<b class="caret"></b></a>
 										
 										<ul class="dropdown-menu multi-column columns-3">
+
+
 										
 													<ul class="multi-column-dropdown">
 														<h6>Shop</h6>
@@ -138,9 +144,10 @@
 								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
 							</ul> <!-- cd-header-buttons -->
 							<div id="cd-search" class="cd-search">
-								<form action="#" method="post">
-									<input name="Search" type="search" placeholder="Search...">
-								</form>
+									
+        <input type="search" name="search" class="typeahead tt-query" autocomplete="on" spellcheck="false">
+   
+
 							</div>	
 						</div>
 						<div class="header-right2">

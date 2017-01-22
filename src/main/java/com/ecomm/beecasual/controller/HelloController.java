@@ -24,15 +24,15 @@ public class HelloController {
 	public String hello(Model model) {
 
 		model.addAttribute("name", "tejas p");
-		
+		model.addAttribute("categoryList", categoryService.getJsonList());
 
-		return "welcome";
+		return "/welcome";
 	}
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("categoryListDrop", categoryService.getList());
 		model.addAttribute("productViewList", productService.getProductViewList());
-		
+		model.addAttribute("categoryList", categoryService.getJsonList());
 		
 		return "/index";
 	}

@@ -1,0 +1,136 @@
+<%@include file="Header1.jsp" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+var myApp=angular.module("myApp",[]);
+myApp.controller("myCtrl",function($scope)
+		{
+		$scope.product=${productViewList};
+		});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	  var trigger = $('.hamburger'),
+	      overlay = $('.overlay'),
+	     isClosed = false;
+
+	    trigger.click(function () {
+	      hamburger_cross();      
+	    });
+
+	    function hamburger_cross() {
+
+	      if (isClosed == true) {          
+	        overlay.hide();
+	        trigger.removeClass('is-open');
+	        trigger.addClass('is-closed');
+	        isClosed = false;
+	      } else {   
+	        overlay.show();
+	        trigger.removeClass('is-closed');
+	        trigger.addClass('is-open');
+	        isClosed = true;
+	      }
+	  }
+	  
+	  $('[data-toggle="offcanvas"]').click(function () {
+	        $('#wrapper').toggleClass('toggled');
+	  });  
+	});
+</script>
+</head>
+<body>
+<div id="wrapper">
+        <div class="overlay"></div>
+    
+<div  id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Brand
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">Team</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Dropdown heading</li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/maridlcrmn">Follow me</a>
+                </li>
+            </ul>
+        </div>
+         <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+  		</div>	     
+    
+    
+
+					<div class="container">
+						<div ng-app="myApp" ng-controller="myCtrl">						
+						<div class="arrivals-grids">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
+												<div class="grid-img">
+													<img  src="resources/images/{{p.productId}}-1.jpg" class="" alt="">
+												</div>
+												<div class="grid-img">
+													<img  src="resources/images/{{p.productId}}-0.jpg" class=""   alt="">
+												</div>			
+											</a>		
+										</figure>	
+									</div>
+									
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<div class="women">
+										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
+										<span class="size">XL / XXL / S </span>
+										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
+										<a href="addCart-{{p.productId}}?userId=1" data-text="Add To Cart" ><input type="button" value="ADD to BAG" class="btn-blue-blue-white1"/></a>
+									</div>
+								</div>
+							</div>
+					</div>
+					</div>
+					</div>
+					</div>
+	
+</body>
+</html>

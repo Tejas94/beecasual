@@ -175,7 +175,12 @@ public class ProductController {
 			
 		}
 		
-		
+		@RequestMapping("/productdisplay")
+		public String displayProduct(Model model)
+		{
+			model.addAttribute("productViewList", productService.getProductViewList());
+			return "/productdisplay";
+		}
 		
 
 
