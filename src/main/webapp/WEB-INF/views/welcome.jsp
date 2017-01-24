@@ -6,14 +6,14 @@
 <script src="resources/js/ui-bootstrap.js" ></script>
    <link rel="stylesheet" href="resources/css/bootstrap-combined.css" media="screen">
    <script>
-		angular.module('myApp', ['ui.bootstrap']);
+		angular.module('myApp1', ['ui.bootstrap']);
 
-		 var myApp=angular.module('myApp').controller('TypeaheadCtrl', function($scope) {
+		 var myApp1=angular.module('myApp1').controller('TypeaheadCtrl', function($scope) {
 
 			  var _selected;
 
 			  $scope.selected = undefined;
-			  $scope.states = [${categoryList}];
+			  $scope.states = ${categoryList};
 			});</script>
    <style type="text/css">
     .typeahead-demo .custom-popup-wrapper {
@@ -45,12 +45,12 @@
 	 
 </head>
 <body>
-<div ng-app="myApp">
+<div ng-app="myApp1">
     <div class='container-fluid typeahead-demo' ng-controller="TypeaheadCtrl">
 
     <h4>Static arrays</h4>
     <pre>Model: {{selected | json}}</pre>
-    <input type="text" ng-model="selected" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+    <input type="text" ng-model="selected" uib-typeahead="state as state.categoryName for state in states | filter:$viewValue | limitTo:8" class="form-control">
 </div>
 </body>
 </html>

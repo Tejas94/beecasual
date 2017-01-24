@@ -3,46 +3,6 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<script type="text/javascript">
-var myApp=angular.module("myApp",[]);
-myApp.controller("myCtrl",function($scope)
-		{
-		$scope.product=${productViewList};
-		});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-	  var trigger = $('.hamburger'),
-	      overlay = $('.overlay'),
-	     isClosed = false;
-
-	    trigger.click(function () {
-	      hamburger_cross();      
-	    });
-
-	    function hamburger_cross() {
-
-	      if (isClosed == true) {          
-	        overlay.hide();
-	        trigger.removeClass('is-open');
-	        trigger.addClass('is-closed');
-	        isClosed = false;
-	      } else {   
-	        overlay.show();
-	        trigger.removeClass('is-closed');
-	        trigger.addClass('is-open');
-	        isClosed = true;
-	      }
-	  }
-	  
-	  $('[data-toggle="offcanvas"]').click(function () {
-	        $('#wrapper').toggleClass('toggled');
-	  });  
-	});
-</script>
-</head>
 <body>
 <div id="wrapper">
         <div class="overlay"></div>
@@ -99,9 +59,10 @@ $(document).ready(function () {
     
 
 					<div class="container">
-						<div ng-app="myApp" ng-controller="myCtrl">						
+						<div ng-app="myApp" ng-controller="myCtrl">	
+						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>					
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product |  filter:searchKeyword">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		
@@ -122,8 +83,8 @@ $(document).ready(function () {
 									<div class="women">
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<span class="size">XL / XXL / S </span>
-										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
-										<a href="addCart-{{p.productId}}?userId=1" data-text="Add To Cart" ><input type="button" value="ADD to BAG" class="btn-blue-blue-white1"/></a>
+										<p ><del></del><em class="item_price fa fa-inr">{{p.productPrice}}</em></p>
+										
 									</div>
 								</div>
 							</div>
@@ -132,5 +93,49 @@ $(document).ready(function () {
 					</div>
 					</div>
 	
+<div>
+<script type="text/javascript">
+var myApp=angular.module("myApp",[]);
+myApp.controller("myCtrl",function($scope,$http,$location)
+		{
+	
+		$scope.searchKeyword=location.search.substr(8).replace(/%20/g," ");
+		$scope.product=${productViewList};
+		
+		});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	  var trigger = $('.hamburger'),
+	      overlay = $('.overlay'),
+	     isClosed = false;
+
+	    trigger.click(function () {
+	      hamburger_cross();      
+	    });
+
+	    function hamburger_cross() {
+
+	      if (isClosed == true) {          
+	        overlay.hide();
+	        trigger.removeClass('is-open');
+	        trigger.addClass('is-closed');
+	        isClosed = false;
+	      } else {   
+	        overlay.show();
+	        trigger.removeClass('is-closed');
+	        trigger.addClass('is-open');
+	        isClosed = true;
+	      }
+	  }
+	  
+	  $('[data-toggle="offcanvas"]').click(function () {
+	        $('#wrapper').toggleClass('toggled');
+	  });  
+	});
+</script>
+
+</div>
 </body>
 </html>

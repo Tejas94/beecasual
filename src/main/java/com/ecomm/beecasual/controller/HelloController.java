@@ -32,7 +32,7 @@ public class HelloController {
 	public String index(Model model) {
 		model.addAttribute("categoryListDrop", categoryService.getList());
 		model.addAttribute("productViewList", productService.getProductViewList());
-		model.addAttribute("categoryList", categoryService.getJsonList());
+		
 		
 		return "/index";
 	}

@@ -10,7 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="resources/js/angular.min.js" ></script>
+<script src="resources/js/angularmodule.js" ></script>
 <script src="resources/js/ui-bootstrap.js" ></script>
 <script src="resources/jquery/jquery.min.js"></script>
 <script src="resources/jquery/bootstrap.js"></script>
@@ -20,7 +22,7 @@
 	<script src="resources/jquery/main.js"></script>
 <!--search jQuery-->
 <script src="resources/jquery/responsiveslides.min.js"></script>
-<script src="resources/jquery/typeahead.bundle.js"></script>
+
  <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -32,6 +34,7 @@
       });
     });
  </script>
+ 
    <link rel="stylesheet" href="resources/css/style2.css" media="screen">
    <!--mycart-->
 <script type="text/javascript" src="resources/jquery/bootstrap-3.1.1.min.js"></script>
@@ -62,6 +65,7 @@
 			});
 		});
 		</script>
+		
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!--//End-rate-->
@@ -126,7 +130,7 @@
 													<ul class="multi-column-dropdown">
 														<h6>Shop</h6>
 														<c:forEach items="${category.subCategory}" var="sub">
-														<li>${sub.subCategoryName}</li>
+														<li><a href="productdisplay?search=${sub.subCategoryName}">${sub.subCategoryName}</a></li>
 														</c:forEach>
 														</ul>
 												
@@ -145,7 +149,12 @@
 							</ul> <!-- cd-header-buttons -->
 							<div id="cd-search" class="cd-search">
 									
-        <input type="search" name="search" class="typeahead tt-query" autocomplete="on" spellcheck="false">
+        <div ng-module="myApp1">
+    <div  ng-controller="TypeaheadCtrl">
+
+    <input type="search" ng-model="selected" uib-typeahead="state as state.categoryName for state in states | filter:$viewValue | limitTo:8" class="form-control">
+</div></div>
+
    
 
 							</div>	
@@ -170,7 +179,18 @@
 		<!--header-->
 		
 		
-	
 
 </body>
+<script>
+		angular.module('myApp1', ['ui.bootstrap']);
+
+		 var myApp1=angular.module('myApp1').controller('TypeaheadCtrl', function($scope) {
+
+			  var _selected;
+
+			  $scope.selected = undefined;
+			  $scope.states = ${categoryListAdvice};
+			});
+		 </script>
+
 </html>

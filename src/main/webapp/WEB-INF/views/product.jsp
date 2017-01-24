@@ -192,10 +192,10 @@ display: none;
 
 </th>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'productName'; sortReverse= !sortReverse" value="Product name">
-<span ng-show="sortType== 'productName'" "></span>
+<span ng-show="sortType== 'productName'" ></span>
 </th>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'productQantity'; sortReverse= !sortReverse" value="Product Qantity ">
-<span ng-show="sortType== 'productQantity'" "></span>
+<span ng-show="sortType== 'productQantity'" ></span>
 </th>
 <th><input id="buttonchange" type="button" ng-click="sortType= 'productPrice'; sortReverse= !sortReverse" value="Product Price ">
 <span ng-show="sortType== 'productPrice'" "></span>

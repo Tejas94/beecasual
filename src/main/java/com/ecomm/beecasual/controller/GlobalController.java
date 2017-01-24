@@ -18,6 +18,7 @@ public class GlobalController {
 	public void getData(Model model)
 	{
 		model.addAttribute("categoryListDrop", categoryService.getList());
+		model.addAttribute("categoryListAdvice", categoryService.getJsonList());
 	}
 	
 }

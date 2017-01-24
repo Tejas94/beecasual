@@ -1,5 +1,5 @@
 <%@ include file="Header1.jsp" %>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+ 
 <script type="text/javascript">
 var myApp=angular.module("myApp",[]);
 myApp.controller("myCtrl",function($scope)
