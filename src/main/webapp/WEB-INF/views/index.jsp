@@ -9,7 +9,6 @@ myApp.controller("myCtrl",function($scope)
 </script>
 
 
-
   <div ng-app="myApp" ng-controller="myCtrl">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -57,7 +56,7 @@ myApp.controller("myCtrl",function($scope)
 							<div class="ban-top">
 								<img src="resources/images/p1.jpg" class="img-responsive" alt=""/>
 								<div class="ban-text">
-									<h4>Men's Clothing</h4>
+								<a href="productdisplay?search=mens" >	<h4>Men's Clothing</h4></a>
 								</div>
 <!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
 <!-- 									<h4>50% <span>Off/-</span></h4> -->
@@ -69,7 +68,7 @@ myApp.controller("myCtrl",function($scope)
 							<div class="ban-top">
 								<img src="resources/images/p2.jpg" class="img-responsive" alt=""/>
 								<div class="ban-text">
-									<h4>Women's Clothing</h4>
+									<a href="productdisplay?search=women" ><h4>Women's Clothing</h4></a>
 								</div>
 <!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
 <!-- 									<h4>50% <span>Off/-</span></h4> -->
@@ -142,7 +141,7 @@ myApp.controller("myCtrl",function($scope)
 									<div class="women">
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<span class="size">XL / XXL / S </span>
-										<p ><del></del><em class="item_price">RS.{{p.productPrice}}</em></p>
+										<p ><del></del><em class="item_price item_price fa fa-inr">{{p.productPrice}}</em></p>
 										<a href="addCart-{{p.productId}}?userId=1" data-text="Add To Cart" ><input type="button" value="ADD to BAG" class="btn-blue-blue-white1"/></a>
 									</div>
 								</div>
@@ -150,6 +149,8 @@ myApp.controller("myCtrl",function($scope)
 					</div>
 					</div>
 					</div>
-					
+		
+
+      
 </div>
 <%@ include file="Footer.jsp" %>

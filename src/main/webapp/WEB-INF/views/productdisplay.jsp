@@ -59,6 +59,7 @@
     
 
 					<div class="container">
+					<div class="row">
 						<div ng-app="myApp" ng-controller="myCtrl">	
 						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>					
 						<div class="arrivals-grids">
@@ -88,6 +89,7 @@
 									</div>
 								</div>
 							</div>
+					</div>
 					</div>
 					</div>
 					</div>

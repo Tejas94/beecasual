@@ -10,14 +10,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <script src="resources/js/angular.min.js" ></script>
 <script src="resources/js/angularmodule.js" ></script>
 <script src="resources/js/ui-bootstrap.js" ></script>
 <script src="resources/jquery/jquery.min.js"></script>
 <script src="resources/jquery/bootstrap.js"></script>
-<link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'> -->
+<!-- <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'> -->
 <!--search jQuery-->
 	<script src="resources/jquery/main.js"></script>
 <!--search jQuery-->
@@ -36,6 +36,7 @@
  </script>
  
    <link rel="stylesheet" href="resources/css/style2.css" media="screen">
+   <link rel="stylesheet" href="resources/css/fonts.css" media="screen">
    <!--mycart-->
 <script type="text/javascript" src="resources/jquery/bootstrap-3.1.1.min.js"></script>
  <!-- cart -->
@@ -73,6 +74,9 @@
   
 </head>
 <body>
+<div id="waitOverlay">
+</div>
+
 <!--header-->
 		<div class="header">
 			<div class="header-top">
@@ -151,8 +155,9 @@
 									
         <div ng-module="myApp1">
     <div  ng-controller="TypeaheadCtrl">
-
-    <input type="search" ng-model="selected" uib-typeahead="state as state.categoryName for state in states | filter:$viewValue | limitTo:8" class="form-control">
+	
+    <input type="search" ng-model="selected" uib-typeahead="state as state.productName for state in states | filter:$viewValue | limitTo:8" class="form-control">
+    
 </div></div>
 
    
@@ -189,8 +194,19 @@
 			  var _selected;
 
 			  $scope.selected = undefined;
-			  $scope.states = ${categoryListAdvice};
+			  $scope.states = ${productListAdvice};
 			});
 		 </script>
+		<script type="text/javascript">			
+		jQuery(document).ready(function ($) {
+		    $(window).load(function () {
+		        setTimeout(function(){
+		            $('#waitOverlay').fadeOut('slow', function () {
+		            });
+		        },1000);
 
+		    });  
+		});
+
+            </script>
 </html>

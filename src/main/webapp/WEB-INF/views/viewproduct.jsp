@@ -106,7 +106,7 @@ class="img-responsive"> </div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
-									<p class="price item_price">&#x20b9;{{product.productPrice}}</p>
+									<p class="price item_price fa fa-inr">{{product.productPrice}}</p>
 								<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
 									<div>

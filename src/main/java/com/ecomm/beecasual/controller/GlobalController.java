@@ -7,18 +7,22 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.ecomm.beecasual.service.CategoryService;
+import com.ecomm.beecasual.service.ProductService;
 
 @ControllerAdvice("com.ecomm.beecasual")
 public class GlobalController {
 
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	ProductService productService;
 	
 	@ModelAttribute
 	public void getData(Model model)
 	{
 		model.addAttribute("categoryListDrop", categoryService.getList());
 		model.addAttribute("categoryListAdvice", categoryService.getJsonList());
+		model.addAttribute("productListAdvice",productService.getJsonProductList());
 	}
 	
 }
