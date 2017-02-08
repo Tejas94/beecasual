@@ -9920,7 +9920,7 @@ p.quote {
 .key {
     background: #fff;
     border: 1px solid #999;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .form-w3agile h3{
     color: #1565C0;
@@ -11850,8 +11850,8 @@ border: 1px solid #3d9999;
 /*-------------------------------*/
 
 .sidebar-nav {
-    position: absolute;
-    top: 150px;
+    position: fixed;
+    top: 200px;
     width: 220px;
     margin: 0;
     padding: 0;
@@ -11960,7 +11960,7 @@ border: 1px solid #3d9999;
 
 .hamburger {
   position: fixed;
-  top: 150px;  
+  top: 200px;  
   z-index: 999;
   display: block;
   width: 32px;
@@ -12102,4 +12102,12 @@ html { height: 100%;}
     height: 100%;
     overflow: visible;
     background: #fff url('preload.jpg') no-repeat center center;
+}
+
+.erorr{
+	margin-bottom: 8px;
+    text-align: left;
+    color: #db3236!important;
+    text-transform: uppercase;
+    margin-bottom: 1em;
 }

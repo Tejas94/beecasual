@@ -99,7 +99,7 @@ display: none;
 								<form:errors path="productName"/><br>
 								<div class="clearfix"></div>
 							</div>
-							Quantity
+							<span>Quantity</span>
 							<div class="key">
 								<form:input path="productQantity" placeholder="add quantity" /><br>
 								<form:errors path="productQantity" /><br>
@@ -127,47 +127,46 @@ display: none;
 								
 								<div class="clearfix"></div>
 							</div>
-				<div class="row">
+				<div class="row" style="margin-bottom:2em">
 				<div class="col-xs-12 col-md-3">
 				Category			
-					<div class="key">
+					
 								<form:select path="category.categoryName">
  <form:options items="${categoryList}" itemValue="categoryName" itemLabel="categoryName"/>
 </form:select><br>
 <div class="clearfix"></div>
-							</div>
+							
 							</div>
 						<div class="col-xs-12 col-md-3">	
 						SubCategory
-					<div class="key">
-								<form:select path="subCategory.subCategoryName">
+													<form:select path="subCategory.subCategoryName">
  <form:options items="${subCategoryList}" itemValue="subCategoryName" itemLabel="subCategoryName"/>
 </form:select>
 <br>
 <div class="clearfix"></div>
-							</div>
+					
 							</div>
 						<div class="col-xs-12 col-md-3">	
 						Brand
-					<div class="key">
+					
 								<form:select path="brand.brandName">
  <form:options items="${brandList}" itemValue="brandName" itemLabel="brandName"/>
 </form:select>
 <br>
 
 								<div class="clearfix"></div>
-							</div>
+					
 							</div>
 						<div class="col-xs-12 col-md-3">	
 						Supplier
-					<div class="key">
+					
 <form:select path="supplier.supplierName">
  <form:options items="${supplierList}" itemValue="supplierName" itemLabel="supplierName"/>
 </form:select>
 <br>
 
 								<div class="clearfix"></div>
-							</div>
+							
 							</div>
 						</div>					
 						<c:if test="${!empty product.productName}">
@@ -208,7 +207,7 @@ display: none;
 </th>
 <th><span id="buttonchange" >edit</span></th>
 <th><span id="buttonchange" >delete</span></th>
-<th><span id="buttonchange" >add info</span></th>
+<th><span id="buttonchange" >info</span></th>
 </tr>
 					</thead>
 					<tbody>
@@ -219,9 +218,9 @@ display: none;
 <td>{{p.productPrice}}</td>
 <td>{{p.productDiscount}}</td>
 <td>{{p.productDescription}}</td>
-<td><a href="editProduct-{{p.productId}}">Edit</a></td>
-<td><a href="deleteProduct-{{p.productId}}">Delete</a></td>
-<td><a href="productspecification-{{p.productId}}">add</a></td>
+<td><a href="editProduct-{{p.productId}}"><span class="glyphicon glyphicon-pencil" style="color:green"></span></a></td>
+<td><a href="deleteProduct-{{p.productId}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+<td><a href="productspecification-{{p.productId}}"><span class="glyphicon glyphicon-plus" style="color:red"></span></a></td>
 <tr>
 
 					</tbody>

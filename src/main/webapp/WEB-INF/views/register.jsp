@@ -23,43 +23,53 @@
 								<form:input type="hidden" path="userId" />
 								<form:input path="userName" placeholder="add username" /><br>
 								<div>
-								<form:errors path="userName"></form:errors>
+								
 								</div>
 								<div class="clearfix"></div>
+							<form:errors path="userName" class="erorr"></form:errors>
 							</div>
+							
 							<div class="key">
 								<form:input type="password" path="password" placeholder="add password" /><br>
-								<form:errors path="password"></form:errors>
+								
 								<div class="clearfix"></div>
+							<form:errors path="password" class="erorr"></form:errors>
 							</div>
 							
 							<div class="key">
 								<form:input  path="firstName" placeholder="add firstName" /><br>
-								<form:errors path="firstName"/>
+								
 								<div class="clearfix"></div>
+						<form:errors path="firstName" class="erorr"/>
 							</div>
 						
 							<div class="key">
 								<form:input  path="lastName" placeholder="add lastName" /><br>
-								<form:errors path="lastName"/>
+								
 								<div class="clearfix"></div>
+							<form:errors path="lastName" class="erorr"/>
 							</div>
+							
 							<div class="key">
 								<form:input  path="emailId" placeholder="add emailId" /><br>
-								<form:errors path="emailId"/>
+								
 								<div class="clearfix"></div>
+							<form:errors path="emailId" class="erorr"/>	
 							</div>
+							
 							<div class="key">
 								<form:input  path="contactNo" placeholder="add contactNo" /><br>
-								<form:errors path="contactNo"/>
+								
 								<div class="clearfix"></div>
+							<form:errors path="contactNo" class="erorr"/>
 							</div>
+							
 						<div class="key">
 
 							
 							<div class="clearfix"></div>
 						</div>
-						<input name="_eventId_submit" type="submit" value="register"/>
+						<input name="_eventId_submit" type="submit" value="next"/>
 		 			 		
 				</div>
 			</div>

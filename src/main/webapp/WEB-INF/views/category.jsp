@@ -133,6 +133,9 @@ max-width: 40px;
 <th><input id="buttonchange" type="button" ng-click="sortType= 'categoryDescription'; sortReverse= !sortReverse" value="Category Description">
 <span ng-show="sortType== 'categoryDescription'" class="fa fa-caret-down"></span>
 </th>
+<th><span id="buttonchange" >edit</span></th>
+<th><span id="buttonchange" >delete</span></th>
+
 </tr>
 					</thead>
 					<tbody>
@@ -140,8 +143,8 @@ max-width: 40px;
 <td>{{c.categoryId}}</td>
 <td>{{c.categoryName}}</td>
 <td>{{c.categoryDescription}}</td>
-<td><a href="editCategory-{{c.categoryId}}"/>Edit</td>
-<td><a href="deleteCategory-{{c.categoryId}}"/>Delete</td>
+<td><a href="editCategory-{{c.categoryId}}"/><span class="glyphicon glyphicon-pencil" style="color:green"></span></td>
+<td><a href="deleteCategory-{{c.categoryId}}"/><span class="glyphicon glyphicon-trash"></span></td>
 </tr>
 
 					</tbody>

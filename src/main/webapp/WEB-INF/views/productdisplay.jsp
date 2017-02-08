@@ -4,6 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<div>
+<ol class="breadcrumb">
+    <li><a href="/BeeCasual/"><b>Home</b></a>
+    </li>
+    
+    <li class="active"><b>View All Products</b></li>
+</ol>
+</div>
 <div id="wrapper">
         <div class="overlay"></div>
     
@@ -14,8 +23,9 @@
                        Brand
                     </a>
                 </li>
-                <li>
-                    <a href="#">Home</a>
+                <li><div class="checkbox">
+  <label><input type="checkbox" value="">Option 1</label>
+</div>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -60,10 +70,10 @@
 
 					<div class="container">
 					<div class="row">
-						<div ng-app="myApp" ng-controller="myCtrl">	
+						<div >	
 						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>					
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product |  filter:searchKeyword">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem" style="margin-bottom:1em" ng-repeat="p in product |  filter:searchKeyword">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		
@@ -83,12 +93,14 @@
 									</div>
 									<div class="women">
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
-										<span class="size">XL / XXL / S </span>
-										<p ><del></del><em class="item_price fa fa-inr">{{p.productPrice}}</em></p>
+										<p><a href="wishList-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-heart"></span></a></p><a href="buyNow-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+										
+										<p ><del></del><em>Rs {{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
 										
 									</div>
 								</div>
 							</div>
+					</div>
 					</div>
 					</div>
 					</div>

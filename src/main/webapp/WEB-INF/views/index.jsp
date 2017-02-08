@@ -115,7 +115,7 @@ myApp.controller("myCtrl",function($scope)
 					<div class="container">
 						<h2 class="tittle">New Arrivals</h2>
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem"  ng-repeat="p in product | limitTo:4">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		

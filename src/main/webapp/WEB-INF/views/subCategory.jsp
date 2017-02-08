@@ -39,7 +39,7 @@ function toggle()
 <style type="text/css">
 #subCategoryTable{
 display: none;
-
+max-width: 600px;
 
 }
  #buttonchange {
@@ -101,12 +101,12 @@ display: none;
 								<form:errors path="subcategoryDescription" /><br>
 								<div class="clearfix"></div>
 							</div>
-	<div class="key">
+	
 								Category<form:select path="category.categoryName">
  <form:options items="${categoryList}" itemValue="categoryName" itemLabel="categoryName"/>
 </form:select><br>
-<div class="clearfix"></div>					
-		</div>				
+<div style="margin-bottom:2em"></div>					
+					
 							<c:if test="${!empty subcategory.subCategoryName}">
 							<input type="submit" value="Edit subcategory"/>
 							</c:if>
@@ -132,6 +132,9 @@ display: none;
 							<th><input id="buttonchange" type="button" ng-click="sortType= 'subcategoryDescription'; sortReverse= !sortReverse" value="subcategory Description ">
 							<span ng-show="sortType== 'subcategoryDescription'" ></span>
 
+<th><span id="buttonchange" >edit</span></th>
+<th><span id="buttonchange" >delete</span></th>
+
 						<tr>
 					</thead>
 					<tbody>
@@ -139,8 +142,8 @@ display: none;
 							<td>{{b.subcategoryId}}</td>
 							<td>{{b.subCategoryName}}</td>
 							<td>{{b.subcategoryDescription}}</td>
-							<td><a href="editSubCategory-{{b.subcategoryId}}"/>Edit</td>
-							<td><a href="deleteSubCategory-{{b.subcategoryId}}"/>Delete</td>
+							<td><a href="editSubCategory-{{b.subcategoryId}}"/><span class="glyphicon glyphicon-pencil" style="color:green"></span></td>
+							<td><a href="deleteSubCategory-{{b.subcategoryId}}"/><span class="glyphicon glyphicon-trash"></span></td>
 						<tr>
 					</tbody>
 				</table>

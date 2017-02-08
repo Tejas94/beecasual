@@ -153,6 +153,8 @@ display: none;
 
 <th><input id="buttonchange" type="button" ng-click="sortType= 'supplierEmailId'; sortReverse= !sortReverse" value="supplier EmailId">
 <span ng-show="sortType== 'supplierEmailId'" ></span>
+<th><span id="buttonchange" >edit</span></th>
+<th><span id="buttonchange" >delete</span></th>
 
 <tr>
 					</thead>
@@ -163,8 +165,8 @@ display: none;
 <td>{{s.supplierAddress}}</td>
 <td>{{s.supplierContact}}</td>
 <td>{{s.supplierEmailId}}</td>
-<td><a href="editSupplier-{{s.supplierId}}"/>Edit</td>
-<td><a href="deleteSupplier-{{s.supplierId}}"/>Delete</td>
+<td><a href="editSupplier-{{s.supplierId}}"/><span class="glyphicon glyphicon-pencil" style="color:green"></span></td>
+<td><a href="deleteSupplier-{{s.supplierId}}"/><span class="glyphicon glyphicon-trash"></span></td>
 <tr>
 
 

@@ -92,7 +92,7 @@
 						<li><a href="checkout.html">Checkout</a></li>
 						<c:if test="${empty pageContext.request.userPrincipal}">
 						<li><a href="login">Login</a></li>
-						<li><a href="registerUser"> Create Account </a></li>
+						<li><a href="/BeeCasual/reg"> Create Account </a></li>
 						</c:if>
 						<c:if test="${!empty pageContext.request.userPrincipal}">
 						<li><a href="/BeeCasual/logout">Logout</a></li>

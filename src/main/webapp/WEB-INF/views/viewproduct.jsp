@@ -68,9 +68,9 @@ document.getElementById("radio1").value=document.getElementById("radio8").value;
 			<div class="single-wl3">
 			<div>
 <ol class="breadcrumb">
-    <li><a href="#"><b>Home</b></a>
+    <li><a href="/BeeCasual/"><b>Home</b></a>
     </li>
-    <li><a href="#"><b>ViewProduct</b></a>
+    <li><a href="productdisplay"><b>View All Products</b></a>
     </li>
     <li class="active"><b>{{product.productName}}</b></li>
 </ol>
@@ -106,7 +106,7 @@ class="img-responsive"> </div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
-									<p class="price item_price fa fa-inr">{{product.productPrice}}</p>
+									<p class="price">Rs {{product.productPrice}}</p>
 								<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
 									<div>
