@@ -84,7 +84,7 @@ myApp.controller("myCtrl",function($scope)
 							<div class="ban-top">
 								<img src="resources/images/p3.jpg" class="img-responsive" alt=""/>
 								<div class="ban-text">
-									<h4>View Collection</h4>
+									<a href="productdisplay" ><h4>View Collection</h4></a>
 								</div>
 <!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
 <!-- 									<h4>50% <span>Off/-</span></h4> -->
@@ -96,7 +96,7 @@ myApp.controller("myCtrl",function($scope)
 							<div class="ban-top">
 								<img src="resources/images/p4.jpg" class="img-responsive" alt=""/>
 								<div class="ban-text">
-									<h4>official merchandise</h4>
+								<a href="productdisplay?search=marvel" >	<h4>official merchandise</h4></a>
 								</div>
 <!-- 								<div class="ban-text2 hvr-sweep-to-top"> -->
 <!-- 									<h4>50% <span>Off/-</span></h4> -->
@@ -141,7 +141,7 @@ myApp.controller("myCtrl",function($scope)
 									<div class="women">
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<span class="size">XL / XXL / S </span>
-										<p ><del></del><em class="item_price item_price fa fa-inr">{{p.productPrice}}</em></p>
+										<p ><del>{{p.productPrice}}</del><em class="item_price item_price fa fa-inr">{{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
 										<a href="addCart-{{p.productId}}?userId=1" data-text="Add To Cart" ><input type="button" value="ADD to BAG" class="btn-blue-blue-white1"/></a>
 									</div>
 								</div>

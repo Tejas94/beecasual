@@ -78,4 +78,11 @@ public class WishListController {
 		
 	}
 	
+	@RequestMapping("/deleteWishList-{wishListId}")
+	public String deletWish(@PathVariable("wishListId")  int wishListId)
+	{
+		wishListService.deleteWhish(wishListId);;
+		return "redirect:/wishList-"+wishListId;
+	}
+	
 }

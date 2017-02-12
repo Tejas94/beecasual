@@ -69,3 +69,4 @@
 
 </body>
 </html>
+<%@ include file="Footer.jsp" %>

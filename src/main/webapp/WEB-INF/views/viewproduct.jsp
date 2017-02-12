@@ -102,11 +102,13 @@ class="img-responsive"> </div>
 									</div>
 								</div>
 								<div class="single-right simpleCart_shelfItem">
-									<h4>{{product.productName}}</h4>
+									<a href="productdisplay?search={{product.productName}}"><h4>{{product.productName}}</h4></a>
+									<div class="fit">{{product.fit}} | {{product.fabric}}</div><br>
+									<div><h5>Discount: {{product.productDiscount}}%</h5></div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
-									<p class="price">Rs {{product.productPrice}}</p>
+									<del>Rs. {{product.productPrice}}</del><p class="price">Rs {{product.productPrice-product.productDiscount*product.productPrice/100}}</p>
 								<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
 									<div>
@@ -152,11 +154,14 @@ class="img-responsive"> </div>
 <!-- 											</div> -->
 									</div>
 									<div class="women">
-										<span class="size">XL / XXL / S </span>
+										
 								<input type="submit" value="Add To Bag" class="btn-blue-blue-white" >
 								<a href="buyNow-{{product.productId}}?userId=1"><input class="btn-blue-dark" type="button" value="Buy Now"></a>
 									</div>
 									</form:form>
+									<br>
+									<div class="description">
+										<p><span>Quick Overview : </span></p>{{product.productDescription}}</div>
 									<div class="social-icon">
 										<a href="#"><i class="icon"></i></a>
 										<a href="#"><i class="icon1"></i></a>
@@ -175,3 +180,4 @@ class="img-responsive"> </div>
 
 </body>
 </html>
+<%@ include file="Footer.jsp" %>

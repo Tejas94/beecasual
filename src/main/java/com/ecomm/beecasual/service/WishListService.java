@@ -25,4 +25,9 @@ public class WishListService {
 	{
 		return wishListDAOImpl.getWishList();
 	}
+	public void deleteWhish(int wishListId)
+	{
+		wishListDAOImpl.deleteWhish(wishListId);
+	}
 }
+

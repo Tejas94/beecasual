@@ -27,15 +27,15 @@ myApp.controller("myCtrl",function($scope)
 									 <img src="resources/images/{{clist.productId}}-0.jpg" class="img-responsive" alt="">
 								</div>
 							   <div class="cart-item-info">
-								<h3>{{clist.productName}}<span>Pickup time:</span></h3>
+								<h3>{{clist.productName}}<span><h3>Price:Rs {{clist.productPrice-clist.productDiscount*clist.productPrice/100}}</h3></h3></span></h3>
 								<ul class="qty">
-									<li><p>Min. order value:</p></li>
+									<li><p><h3>Quantity: {{s.productQuantity}}</p></li>
 									<li><p>FREE delivery</p></li>
 								</ul>
 									 <div class="delivery">
-									 <p>Service Charges : $10.00</p>
+									 <p>Service Charges : Rs.10.00</p>
 									 <span><h3><a href="/BeeCasual/checkout?userId=${sessionScope.userId}">Checkout</a></h3></span><br>
-									 <span>Delivered in 1-1:30 hours</span>
+									 <span>Delivered in 1-1:3 Days</span>
 									 <div class="clearfix"></div>
 								</div>	
 							   </div>

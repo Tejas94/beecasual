@@ -9,7 +9,7 @@
 						  <var name="userDetails" class="com.ecomm.beecasual.model.UserDetails"/>
 						  <var name="shippingAddress" class="com.ecomm.beecasual.model.ShippingAddress"/>
 						  <var name="billingAddress" class="com.ecomm.beecasual.model.BillingAddress"/>
-						  
+						  <var name="cartItem" class="com.ecomm.beecasual.model.CartItem"/>
  							<on-start >
 						  <evaluate expression="cartFlowHandler.initFlow()" result="flowScope.cartDetails"/>
 						  </on-start>
@@ -60,8 +60,17 @@
 						  <transition on="failure" to="editbilling"  />
 						  <transition on="success" to="billing"></transition>
 						  </action-state>
-						  <view-state id="payment" view="payment">
+						  
+						  <view-state id="payment" view="payment" model="cartItem">
+						  <transition on="submit" to="flag" />
 						  </view-state>
+						  
+						  <action-state id="flag">
+						  <evaluate expression="cartItemService.updateFlag(externalContext.sessionMap.cartItemId)"></evaluate>
+						  <transition on="failure" to="payment"  />
+						  <transition on="success" to="tohome"></transition>
+						  </action-state>
+						  <end-state id="tohome" view="index"></end-state>
 						  
 						  </flow>						 
 						 

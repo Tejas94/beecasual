@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ecomm.beecasual.dao.WishListDAO;
-
+import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.model.WishList;
 
 @Repository
@@ -33,6 +33,11 @@ public class WishListDAOImpl implements WishListDAO {
 		List<WishList> wishList=session.createQuery("from WishList").getResultList();
 		
 		return wishList;}
-
+	public void deleteWhish(int wishListId) {
+		WishList wishListToDelete= new WishList();
+		wishListToDelete.setWishListId(wishListId);
+		sessionFactory.getCurrentSession().delete(wishListToDelete);
+		
+	}
 
 }

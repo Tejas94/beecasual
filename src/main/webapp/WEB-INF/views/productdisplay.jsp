@@ -95,7 +95,7 @@
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<p><a href="wishList-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-heart"></span></a></p><a href="buyNow-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 										
-										<p ><del></del><em>Rs {{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
+										<p ><del>{{p.productPrice}}</del><em> Rs {{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
 										
 									</div>
 								</div>
@@ -153,3 +153,4 @@ $(document).ready(function () {
 </div>
 </body>
 </html>
+<%@ include file="Footer.jsp" %>

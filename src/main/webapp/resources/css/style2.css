@@ -12111,3 +12111,8 @@ html { height: 100%;}
     text-transform: uppercase;
     margin-bottom: 1em;
 }
+
+.fit{
+	color: rgba(0,0,0,.6);
+    display: inline-block;
+}

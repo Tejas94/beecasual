@@ -29,12 +29,22 @@ public class CartItem implements Serializable{
 	@Expose
 	private double productPrice;
 	@Expose
+	private double productDiscount;
+	
+	
+	@Expose
 	private int productQuantity;
 	@Expose
 	private boolean flag;
 	@Expose
 	private String productSize;
 	
+	public double getProductDiscount() {
+		return productDiscount;
+	}
+	public void setProductDiscount(double productDiscount) {
+		this.productDiscount = productDiscount;
+	}
 	
 	public String getProductSize() {
 		return productSize;

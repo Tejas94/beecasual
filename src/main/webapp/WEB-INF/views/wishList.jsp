@@ -21,7 +21,7 @@ myApp.controller("myCtrl",function($scope)
 					 <h2>My WishList</h2>
 						
 					 <div class="cart-header" ng-repeat="w in wishJson">
-						 <div class="close1"><span class="glyphicon glyphicon-remove"></span> </div>
+						 <div class="close1"><a href="deleteWishList-{{w.wishListId}}"></a><span class="glyphicon glyphicon-remove"></span> </a></div>
 						 <div class="cart-sec simpleCart_shelfItem">
 								<div class="cart-item cyc">
 									 <img src="resources/images/{{w.productId}}-0.jpg" class="img-responsive" alt="">
@@ -34,7 +34,7 @@ myApp.controller("myCtrl",function($scope)
 								</ul>
 									 <div class="delivery">
 									 <p>Service Charges : $10.00</p>
-									 <span><h3><a href="/BeeCasual/checkout?userId=${sessionScope.userId}">Checkout</a></h3></span><br>
+<%-- 									 <span><h3><a href="/BeeCasual/checkout?userId=${sessionScope.userId}">Checkout</a></h3></span><br> --%>
 									 <span>Delivered in 1-1:30 hours</span>
 									 <div class="clearfix"></div>
 								</div>	
@@ -51,3 +51,4 @@ myApp.controller("myCtrl",function($scope)
 
 </body>
 </html>
+<%@ include file="Footer.jsp" %>

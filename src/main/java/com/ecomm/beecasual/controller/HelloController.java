@@ -1,13 +1,17 @@
 package com.ecomm.beecasual.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ecomm.beecasual.model.CartItem;
 import com.ecomm.beecasual.service.CategoryService;
 import com.ecomm.beecasual.service.ProductService;
 import com.google.gson.Gson;
@@ -24,7 +28,7 @@ public class HelloController {
 	public String hello(Model model) {
 
 		model.addAttribute("name", "tejas p");
-		model.addAttribute("categoryList", categoryService.getJsonList());
+
 
 		return "/welcome";
 	}

@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>BeeCasual</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -89,7 +90,13 @@
 					</div>
 					<div class="top-right">
 					<ul>
-						<li><a href="checkout.html">Checkout</a></li>
+					<c:if test="${!empty pageContext.request.userPrincipal}">
+					<sec:authorize access="hasAnyRole('ROLE_USER')">
+						<li><a href="#"><span class="glyphicon glyphicon-lock"></span>Bag</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-heart"></span>Whishlist</a></li>
+					</sec:authorize>
+						</c:if>
+					
 						<c:if test="${empty pageContext.request.userPrincipal}">
 						<li><a href="login">Login</a></li>
 						<li><a href="/BeeCasual/reg"> Create Account </a></li>
@@ -128,10 +135,7 @@
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">${category.categoryName}<b class="caret"></b></a>
 										
 										<ul class="dropdown-menu multi-column columns-3">
-
-
-										
-													<ul class="multi-column-dropdown">
+												<ul class="multi-column-dropdown">
 														<h6>Shop</h6>
 														<c:forEach items="${category.subCategory}" var="sub">
 														<li><a href="productdisplay?search=${sub.subCategoryName}">${sub.subCategoryName}</a></li>
@@ -142,6 +146,22 @@
 										
 									</li>
 									</c:forEach>
+									<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+									<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms<b class="caret"></b></a>
+									<ul class="dropdown-menu multi-column columns-3">
+												<ul class="multi-column-dropdown">
+												
+												<li><a href="category">category</a></li>
+												<li><a href="subCategory">subCategory</a></li>
+												<li><a href="product">product</a></li>
+												<li><a href="brand">brand</a></li>
+												<li><a href="supplier">supplier</a></li>
+										</ul>
+										
+										</ul>
+									</li>
+</sec:authorize>
 								</ul>
 								
 							</div>
@@ -167,12 +187,11 @@
 						<div class="header-right2">
 							<div class="cart box_1">
 								<a href="checkout.html">
-									<h3> <div class="total">
-										<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-										<img src="resources/images/bag.png" alt="" />
+									<h3> 
+							
 									</h3>
 								</a>
-								<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+								
 								<div class="clearfix"> </div>
 							</div>	
 						</div>

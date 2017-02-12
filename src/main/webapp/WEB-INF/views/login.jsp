@@ -29,6 +29,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<input type="submit" value="submit"/>
+							<a href="/BeeCasual/reg"><input type="button" class="btn-blue-blue-white1" value="Register"/></a>
 	
 </div>
 </div>
@@ -36,3 +37,4 @@
 </form>
 </body>
 </html>
+<%@ include file="Footer.jsp" %>
