@@ -116,6 +116,7 @@ class="img-responsive"> </div>
 									<div>
 									
 										<form:input path="productSize"  id="radio1" type="hidden"  />
+										<form:errors path="productSize" class="erorr" />
 										<input type="button" value="S" class="btn-radio" onclick="clickdata()" id="radio">
 										
 										<form:input path="productSize"  id="radio1" type="hidden" />

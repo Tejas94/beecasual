@@ -21,9 +21,9 @@ public class WishListService {
 		wishListDAOImpl.addWishList(wishList);
 	}
 	
-	public List<WishList> getWishList()
+	public List<WishList> getWishList(int userId)
 	{
-		return wishListDAOImpl.getWishList();
+		return wishListDAOImpl.getWishList(userId);
 	}
 	public void deleteWhish(int wishListId)
 	{

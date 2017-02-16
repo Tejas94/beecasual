@@ -70,7 +70,7 @@ public class WishListController {
 		
 		
 		Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		String viewWish=gson.toJson(wishListService.getWishList());
+		String viewWish=gson.toJson(wishListService.getWishList(userId));
 		model.addAttribute("wishJson", viewWish);
 		
 		return "/wishList";
@@ -79,10 +79,10 @@ public class WishListController {
 	}
 	
 	@RequestMapping("/deleteWishList-{wishListId}")
-	public String deletWish(@PathVariable("wishListId")  int wishListId)
+	public String deletWish(@PathVariable("wishListId")int wishListId)
 	{
-		wishListService.deleteWhish(wishListId);;
-		return "redirect:/wishList-"+wishListId;
+		wishListService.deleteWhish(wishListId);
+		return "redirect:/wishList";
 	}
 	
 }

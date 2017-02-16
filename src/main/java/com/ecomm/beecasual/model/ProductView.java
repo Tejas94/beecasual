@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.google.gson.annotations.Expose;
 
@@ -47,6 +50,7 @@ public class ProductView {
 	@Expose
 	private String style;
 	@Expose
+	
 	private String size;
 	
 	

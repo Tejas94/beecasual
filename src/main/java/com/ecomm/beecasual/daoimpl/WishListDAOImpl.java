@@ -27,12 +27,14 @@ public class WishListDAOImpl implements WishListDAO {
 		
 	}
 	
-	public List<WishList> getWishList() {
+	public List<WishList> getWishList(int userId) {
 		Session session=sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<WishList> wishList=session.createQuery("from WishList").getResultList();
+		List<WishList> wishList=session.createQuery("from WishList where userId="+userId+"and Flag=false").getResultList();
 		
-		return wishList;}
+		return wishList;
+		}
+	
 	public void deleteWhish(int wishListId) {
 		WishList wishListToDelete= new WishList();
 		wishListToDelete.setWishListId(wishListId);

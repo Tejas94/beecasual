@@ -92,8 +92,8 @@
 					<ul>
 					<c:if test="${!empty pageContext.request.userPrincipal}">
 					<sec:authorize access="hasAnyRole('ROLE_USER')">
-						<li><a href="#"><span class="glyphicon glyphicon-lock"></span>Bag</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-heart"></span>Whishlist</a></li>
+						<li><a href="cartItems"><span class="glyphicon glyphicon-lock"></span>Bag</a></li>
+						<li><a href="wishList"><span class="glyphicon glyphicon-heart"></span>Whishlist</a></li>
 					</sec:authorize>
 						</c:if>
 					
@@ -176,7 +176,7 @@
         <div ng-module="myApp1">
     <div  ng-controller="TypeaheadCtrl">
 	
-    <input type="search" ng-model="selected" uib-typeahead="state as state.productName for state in states | filter:$viewValue | limitTo:8" class="form-control">
+    <input type="text" id="bar" onkeypress="redirectEvent(event)"  ng-model="selected" uib-typeahead="state as state.productName for state in states | filter:$viewValue | limitTo:8" class="form-control">
     
 </div></div>
 
@@ -227,5 +227,14 @@
 		    });  
 		});
 
+            </script>
+            <script type="text/javascript">
+            function redirectEvent(event)
+            {
+            	if(event.keycode == 13){
+            		window.location.href = "productdisplay?search="+document.getElementById('bar').value;
+            	  
+                }
+            };
             </script>
 </html>

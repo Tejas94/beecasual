@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Pattern;
 
 import com.google.gson.annotations.Expose;
 
@@ -37,6 +38,7 @@ public class CartItem implements Serializable{
 	@Expose
 	private boolean flag;
 	@Expose
+	@Pattern(regexp="([a-zA-Z]{1})+[,]+" ,message="select a size")
 	private String productSize;
 	
 	public double getProductDiscount() {

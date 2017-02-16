@@ -29,7 +29,7 @@ myApp.controller("myCtrl",function($scope)
 							   <div class="cart-item-info">
 								<h3>{{clist.productName}}<span><h3>Price:Rs {{clist.productPrice-clist.productDiscount*clist.productPrice/100}}</h3></h3></span></h3>
 								<ul class="qty">
-									<li><p><h3>Quantity: {{s.productQuantity}}</p></li>
+									<li><p><h3>Quantity: {{clist.productQuantity}}</p></li>
 									<li><p>FREE delivery</p></li>
 								</ul>
 									 <div class="delivery">

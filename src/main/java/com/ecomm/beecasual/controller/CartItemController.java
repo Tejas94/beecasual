@@ -1,12 +1,14 @@
 package com.ecomm.beecasual.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,8 +90,18 @@ public class CartItemController {
 		return "redirect:/cart?userId="+userId;
 	}
 	@RequestMapping("/addCart-{productId}")
-	public String addCart(@ModelAttribute("cartItems") CartItem cartItem,@RequestParam("userId") int userId,@PathVariable("productId") int productId,Product product,HttpSession session)
+	public String addCart(@Valid@ModelAttribute("cartItems") CartItem cartItem,BindingResult bindingResult,Model model,@RequestParam("userId") int userId,@PathVariable("productId") int productId,Product product,HttpSession session)
 	{
+		if(bindingResult.hasErrors()){
+			Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+			String viewlist= gson.toJson(productService.getProductViewListById(productId));
+			model.addAttribute("product",viewlist);
+			return "/viewproduct";
+		}
+		else
+		{
+		
+		
 		int cartItemId;
 		int count=cartItemService.getCartOnce(productId,cartItem.getProductSize(),userId);
 		if(count==1)
@@ -127,10 +139,12 @@ public class CartItemController {
 		session.setAttribute("cartItemId", cartItemId);
 		
 		
-		return "redirect:/cartItems-"+cartItemId;
+		return "redirect:/cartItems";
+	}
 	}
 	
-	@RequestMapping("/cartItems-{cartItemId}")
+	
+	@RequestMapping("/cartItems")
 	public String showCart(HttpSession session,Model model)
 	{
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
@@ -138,7 +152,7 @@ public class CartItemController {
 		int userId=userDetailsService.getUserByName(userName).getUserId();
 		
 		session.setAttribute("userId", userId);
-	    int cartItemId=(Integer) session.getAttribute("cartItemId");
+	   
 		
 	    Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String showCartList=gson.toJson(cartItemService.getCartItemList(userId));
@@ -152,6 +166,6 @@ public class CartItemController {
 	public String deleteCartItem(@PathVariable("cartItemId")  int cartItemId)
 	{
 		cartItemService.deleteCartItem(cartItemId);
-		return "redirect:/cartItems-"+cartItemId;
+		return "redirect:/cartItems";
 	}
 }
