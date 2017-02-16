@@ -23,40 +23,28 @@
                        Brand
                     </a>
                 </li>
-                <li><div class="checkbox">
-  <label><input type="checkbox" value="">Option 1</label>
-</div>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">Team</a>
-                </li>
+                
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
+                    
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeCategory('Mens')"/> Mens</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeCategory('Women')"/> Women</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeCategory('Kids')"/> kids</div></li>
+                     </ul>
                 </li>
-                <li>
-                    <a href="#">Services</a>
+                
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">SubCategory <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                   
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeSubCategory('t shirts')"/> t shirts</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeSubCategory('jeans')"/> jeans</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeSubCategory('shirts')"/> shirts</div></li>
+                     </ul>
                 </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/maridlcrmn">Follow me</a>
-                </li>
-            </ul>
+                
+                            </ul>
         </div>
          <div id="page-content-wrapper">
             <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
@@ -71,9 +59,28 @@
 					<div class="container">
 					<div class="row">
 						<div >	
-						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>					
+						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>	
+						<div>
+<ol class="breadcrumb1">
+    <li><b>Sort by</b>
+    </li>
+    
+    <li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productName'; sortReverse= !sortReverse" value="name">
+<span ng-show="sortType== 'productName'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
+</b></li>
+
+<li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productPrice'; sortReverse= !sortReverse" value="Price">
+<span ng-show="sortType== 'productPrice'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
+</b></li>
+
+<li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productDiscount'; sortReverse= !sortReverse" value="Discount">
+<span ng-show="sortType== 'productDiscount'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
+</b></li>
+</ol>
+</div>
+										
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem" style="margin-bottom:1em" ng-repeat="p in product |  filter:searchKeyword">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem" style="margin-bottom:1em" ng-repeat="p in product |  filter:searchKeyword | filter:categoryFilter | filter:subCategoryFilter | orderBy:sortType:sortReverse">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		
@@ -116,6 +123,48 @@ myApp.controller("myCtrl",function($scope,$http,$location)
 		$scope.searchKeyword=location.search.substr(8).replace(/%20/g," ");
 		$scope.product=${productViewList};
 		
+		
+	    $scope.categoryIncludes = [];
+	    
+	    $scope.includeCategory = function(categoryName) {
+	        var i = $.inArray(categoryName, $scope.categoryIncludes);
+	        if (i > -1) {
+	            $scope.categoryIncludes.splice(i, 1);
+	        } else {
+	            $scope.categoryIncludes.push(categoryName);
+	        }
+	    }
+	    
+	    $scope.categoryFilter = function(product) {
+	        if ($scope.categoryIncludes.length > 0) {
+	            if ($.inArray(product.categoryName, $scope.categoryIncludes) < 0)
+	                return;
+	        }
+	        
+	        return product;
+	    }
+	    //subcategory filter
+		$scope.subCategoryIncludes = [];
+	    
+	    $scope.includeSubCategory = function(subCategoryName) {
+	        var i = $.inArray(subCategoryName, $scope.subCategoryIncludes);
+	        if (i > -1) {
+	            $scope.subCategoryIncludes.splice(i, 1);
+	        } else {
+	            $scope.subCategoryIncludes.push(subCategoryName);
+	        }
+	    }
+	    
+	    $scope.subCategoryFilter = function(product) {
+	        if ($scope.subCategoryIncludes.length > 0) {
+	            if ($.inArray(product.subCategoryName, $scope.subCategoryIncludes) < 0)
+	                return;
+	        }
+	        
+	        return product;
+	    }
+	    
+	    	    
 		});
 </script>
 

@@ -132,13 +132,13 @@
 									<!-- Mega Menu -->
 									<c:forEach items="${categoryListDrop}" var="category">
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">${category.categoryName}<b class="caret"></b></a>
+										<a href="productdisplay?search=${category.categoryName}" class="dropdown-toggle" data-toggle="dropdown">${category.categoryName}<b class="caret"></b></a>
 										
 										<ul class="dropdown-menu multi-column columns-3">
 												<ul class="multi-column-dropdown">
 														<h6>Shop</h6>
 														<c:forEach items="${category.subCategory}" var="sub">
-														<li><a href="productdisplay?search=${sub.subCategoryName}">${sub.subCategoryName}</a></li>
+														<li><a href="productdisplay?search=${sub.subcategoryDescription}">${sub.subCategoryName}</a></li>
 														</c:forEach>
 														</ul>
 												
