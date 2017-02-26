@@ -46,5 +46,10 @@ public class CartItemService {
 	{
 		return cartItemDAOImpl.getCartOnceName(productId, productSize, userId);
 	}
+	
+	public void updateQuantity2(int productId,int quantity)
+	{
+		cartItemDAOImpl.updateQuantity2(productId, quantity);
+	}
 
 }

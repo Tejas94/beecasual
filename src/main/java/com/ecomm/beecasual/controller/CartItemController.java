@@ -103,19 +103,21 @@ public class CartItemController {
 		
 		
 		int cartItemId;
-		int count=cartItemService.getCartOnce(productId,cartItem.getProductSize(),userId);
-		if(count==1)
-		{
-			cartItemId = cartItemService.getCartOnceName(productId, cartItem.getProductSize(), userId).getCartItemId();
-			productService.updateQuantity1(productId, cartItem.getProductQuantity());
-			
-		}
-		else
-		{
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		String userName=authentication.getName();
 		userDetailsService.getUserByName(userName);
 		userId=userDetailsService.getUserByName(userName).getUserId();
+		int count=cartItemService.getCartOnce(productId,cartItem.getProductSize(),userId);
+		System.out.println(count);
+		if(count==1)
+		{
+			cartItemId = cartItem.getCartItemId();
+			cartItemService.updateQuantity2(productId, cartItem.getProductQuantity());
+			
+		}
+		else
+		{
+		
 		cartItem.setCartId(userId);
 		cartItem.setUserId(userId);
 		cartItem.setFlag(false);

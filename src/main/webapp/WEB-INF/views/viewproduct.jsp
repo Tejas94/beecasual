@@ -104,11 +104,11 @@ class="img-responsive"> </div>
 								<div class="single-right simpleCart_shelfItem">
 									<a href="productdisplay?search={{product.productName}}"><h4>{{product.productName}}</h4></a>
 									<div class="fit">{{product.fit}} | {{product.fabric}}</div><br>
-									<div><h5>Discount: {{product.productDiscount}}%</h5></div>
+									<div ng-if="product.productDiscount!==0"><h5>Discount: {{product.productDiscount}}%</h5></div>
 									<div class="block">
 										<div class="starbox small ghosting"> </div>
 									</div>
-									<del>Rs. {{product.productPrice}}</del><p class="price">Rs {{product.productPrice-product.productDiscount*product.productPrice/100}}</p>
+									<del ng-if="product.productDiscount!==0">Rs. {{product.productPrice}}</del><p class="price">Rs {{product.productPrice-product.productDiscount*product.productPrice/100}}</p>
 								<form:form modelAttribute="cartItems" action="/BeeCasual/addCart-${sessionScope.productId}?userId=1">
 									<div class="color-quality">
 									<div>

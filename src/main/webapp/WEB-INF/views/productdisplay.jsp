@@ -11,7 +11,9 @@
     </li>
     
     <li class="active"><b>View All Products</b></li>
+    <li class="active"><b><span><label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label></span></b></li>
 </ol>
+
 </div>
 <div id="wrapper">
         <div class="overlay"></div>
@@ -20,7 +22,7 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       Brand
+                       Filter
                     </a>
                 </li>
                 
@@ -44,6 +46,18 @@
                      </ul>
                 </li>
                 
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Brand <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                   
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeBrand('nike')"/>nike</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeBrand('Mr.right')"/>Mr.right</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeBrand('Artic')"/>Artic</div></li>
+                    <li><div class="checkbox" style="left:1em;color:white"><input type="checkbox" ng-click="includeBrand('Marvel')"/>Marvel</div></li>
+                     </ul>
+                </li>
+                
+                
                             </ul>
         </div>
          <div id="page-content-wrapper">
@@ -59,28 +73,28 @@
 					<div class="container">
 					<div class="row">
 						<div >	
-						<label>Search BOX: <input type="text" name="a" ng-model="searchKeyword"></label>	
+							
 						<div>
 <ol class="breadcrumb1">
     <li><b>Sort by</b>
     </li>
     
-    <li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productName'; sortReverse= !sortReverse" value="name">
+    <li class="active" style="color:#0d59af"><b><input id="buttonchange" type="button" ng-click="sortType= 'productName'; sortReverse= !sortReverse" value="name">
 <span ng-show="sortType== 'productName'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
 </b></li>
 
-<li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productPrice'; sortReverse= !sortReverse" value="Price">
-<span ng-show="sortType== 'productPrice'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
+<li class="active" style="color:#0d59af"><b><input id="buttonchange" type="button" ng-click="sortType= 'productPrice'; sortReverse= !sortReverse" value="Price">
+<span ng-show="sortType== 'productPrice'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span><span ng-if="sortReverse">High to low</span>
 </b></li>
 
-<li class="active"><b><input id="buttonchange" type="button" ng-click="sortType= 'productDiscount'; sortReverse= !sortReverse" value="Discount">
-<span ng-show="sortType== 'productDiscount'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span>
+<li class="active" style="color:#0d59af"><b><input id="buttonchange" type="button" ng-click="sortType= 'productDiscount'; sortReverse= !sortReverse" value="Discount">
+<span ng-show="sortType== 'productDiscount'" ng-class="{'glyphicon glyphicon-arrow-up':!sortReverse, 'glyphicon glyphicon-arrow-down':sortReverse}" ></span><span ng-if="sortReverse">High to low</span>
 </b></li>
 </ol>
 </div>
 										
 						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem" style="margin-bottom:1em" ng-repeat="p in product |  filter:searchKeyword | filter:categoryFilter | filter:subCategoryFilter | orderBy:sortType:sortReverse">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem" style="margin-bottom:1em" ng-repeat="p in product |  filter:searchKeyword | filter:categoryFilter | filter:subCategoryFilter | filter:brandFilter | orderBy:sortType:sortReverse">
 								<div class="grid-arr">
 									<div  class="grid-arrival">
 										<figure>		
@@ -102,7 +116,7 @@
 										<h6><a href="viewproduct-{{p.productId}}">{{p.productName}}</a></h6>
 										<p><a href="wishList-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-heart"></span></a></p><a href="buyNow-{{p.productId}}?userId=1"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 										
-										<p ><del>{{p.productPrice}}</del><em> Rs {{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
+										<p ><del ng-if="p.productDiscount!==0">{{p.productPrice}}</del><em> Rs {{p.productPrice-p.productDiscount*p.productPrice/100}}</em></p>
 										
 									</div>
 								</div>
@@ -163,7 +177,29 @@ myApp.controller("myCtrl",function($scope,$http,$location)
 	        
 	        return product;
 	    }
+		
+	    //brand filter
+		$scope.brandIncludes = [];
 	    
+	    $scope.includeBrand = function(brandName) {
+	        var i = $.inArray(brandName, $scope.brandIncludes);
+	        if (i > -1) {
+	            $scope.brandIncludes.splice(i, 1);
+	        } else {
+	            $scope.brandIncludes.push(brandName);
+	        }
+	    }
+	    
+	    $scope.brandFilter = function(product) {
+	        if ($scope.brandIncludes.length > 0) {
+	            if ($.inArray(product.brandName, $scope.brandIncludes) < 0)
+	                return;
+	        }
+	        
+	        return product;
+	    }
+	    
+
 	    	    
 		});
 </script>

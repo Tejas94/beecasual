@@ -73,4 +73,11 @@ public class CartItemDAOImpl implements CartItemDAO {
 			List<CartItem> cartItemProduct=session.createQuery("from CartItem where productId="+productId+"and productSize='"+productSize+"' and userId="+userId).getResultList();
 			return cartItemProduct.get(0);
 		}
+		
+		public void updateQuantity2(int productId,int quantity)
+		{
+			
+			String hql="update CartItem set productQuantity= productQuantity +"+quantity+" where productId="+productId;
+			sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
+		}
 }
